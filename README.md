@@ -108,6 +108,52 @@ Events are grouped by the department that performs them.
 
 For each event type, the object types it is linked to and the qualifiers used.
 
+### Explicit in the dataset
+
+| Event Type          | Object Type | Qualifier         |
+| ------------------- | ----------- | ----------------- |
+| `confirm order`     | `customers` | `customer`        |
+| `confirm order`     | `employees` | `sales person`    |
+| `confirm order`     | `items`     | `item`            |
+| `confirm order`     | `orders`    | `order`           |
+| `confirm order`     | `products`  | `product`         |
+| `create package`    | `employees` | `packer`          |
+| `create package`    | `items`     | `item`            |
+| `create package`    | `packages`  | `creates`         |
+| `create package`    | `products`  | `product`         |
+| `failed delivery`   | `employees` | `shipper`         |
+| `failed delivery`   | `items`     | `item`            |
+| `failed delivery`   | `packages`  | `shipped package` |
+| `failed delivery`   | `products`  | `product`         |
+| `item out of stock` | `employees` | `employee`        |
+| `item out of stock` | `items`     | `item`            |
+| `item out of stock` | `products`  | `product`         |
+| `package delivered` | `employees` | `shipper`         |
+| `package delivered` | `items`     | `item`            |
+| `package delivered` | `packages`  | `shipped package` |
+| `package delivered` | `products`  | `product`         |
+| `pay order`         | `items`     | `item`            |
+| `pay order`         | `orders`    | `order`           |
+| `pay order`         | `products`  | `product`         |
+| `payment reminder`  | `items`     | `item`            |
+| `payment reminder`  | `orders`    | `order`           |
+| `payment reminder`  | `products`  | `product`         |
+| `pick item`         | `employees` | `employee`        |
+| `pick item`         | `items`     | `item`            |
+| `pick item`         | `products`  | `product`         |
+| `place order`       | `customers` | `customer`        |
+| `place order`       | `items`     | `item`            |
+| `place order`       | `orders`    | `order`           |
+| `place order`       | `products`  | `product`         |
+| `reorder item`      | `employees` | `employee`        |
+| `reorder item`      | `items`     | `item`            |
+| `reorder item`      | `products`  | `product`         |
+| `send package`      | `employees` | `forwarder`       |
+| `send package`      | `employees` | `shipper`         |
+| `send package`      | `items`     | `item`            |
+| `send package`      | `packages`  | `shipped package` |
+| `send package`      | `products`  | `product`         |
+
 ## Object-to-Object Relationships (O2O)
 
 Relationships are split by **how they are obtained**, because this affects the conceptual model.
@@ -116,13 +162,15 @@ Relationships are split by **how they are obtained**, because this affects the c
 
 | Source Object | Qualifier           | Target Object |
 | ------------- | ------------------- | ------------- |
-| `employees`   | `primarySalesRep`   | `customers`   |
-| `employees`   | `secondarySalesRep` | `customers`   |
+| `customers`   | `places`            | `orders`      |
+| `customers`   | `primarySalesRep`   | `employees`   |
+| `customers`   | `secondarySalesRep` | `employees`   |
+| `orders`      | `comprises`         | `items`       |
+| `items`       | `is a`              | `products`    |
+| `packages`    | `contains`          | `items`       |
 | `packages`    | `packed by`         | `employees`   |
 | `packages`    | `forwarded by`      | `employees`   |
 | `packages`    | `shipped by`        | `employees`   |
-
-> The dataset documentation lists the relationships above "among others": the full list must be extracted from the `object_object` table. Qualifier spelling must match the data.
 
 ## Domain Considerations
 
