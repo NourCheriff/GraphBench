@@ -188,7 +188,11 @@ TBD (WP4)
 
 ## GraphDB
 
-TBD (WP3)
+The RDF model is defined in [`docs/rdf-model/RDF_schema.ttl`](docs/rdf-model/RDF_schema.ttl).
+
+![RDF model](docs/img/rdf_model_diagram.png)
+
+Two namespaces are used: `ocel:` for the metamodel concepts (`Event`, `Object`, `AttributeValue`), reusable with any OCEL log, and `om:` for this dataset's types and relationships.
 
 # Benchmarking
 
