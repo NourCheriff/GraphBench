@@ -163,8 +163,8 @@ Relationships are split by **how they are obtained**, because this affects the c
 | Source Object | Qualifier           | Target Object |
 | ------------- | ------------------- | ------------- |
 | `customers`   | `places`            | `orders`      |
-| `customers`   | `primarySalesRep`   | `employees`   |
-| `customers`   | `secondarySalesRep` | `employees`   |
+| `employees`   | `primarySalesRep`   | `customers`   |
+| `employees`   | `secondarySalesRep` | `customers`   |
 | `orders`      | `comprises`         | `items`       |
 | `items`       | `is a`              | `products`    |
 | `packages`    | `contains`          | `items`       |
