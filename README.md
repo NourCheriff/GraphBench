@@ -184,7 +184,16 @@ Relationships are split by **how they are obtained**, because this affects the c
 
 ## Neo4j
 
-TBD (WP4)
+The LPG model is defined in [`docs/lpg-model/LPG_schema.cypher`](docs/lpg-model/LPG_schema.cypher) using [`Cypher`](https://neo4j.com/docs/cypher-manual/current/introduction/).
+
+The model diagram was created with [arrows.app](https://arrows.app).
+
+![LPG model](docs/img/lpg_model_diagram.png)
+
+The LPG model represents customers, employees, orders, products, packages, and events, together with the relationships between them. It captures sales, order contents, event involvement, and employee responsibilities.
+
+The **blue** nodes represent the **objects**. The **orange** nodes are the events.
+
 
 ## GraphDB
 
