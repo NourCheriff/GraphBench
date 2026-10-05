@@ -992,8 +992,8 @@
         "IRI-based": "primarySalesRep"
       },
       "attributes": ["object"],
-      "domain": "29",
-      "range": "11",
+      "domain": "11",
+      "range": "29",
       "superproperty": ["6"],
       "pos": [2265.81, -1030.38]
     },
@@ -1127,8 +1127,8 @@
         "IRI-based": "secondarySalesRep"
       },
       "attributes": ["object"],
-      "domain": "29",
-      "range": "11",
+      "domain": "11",
+      "range": "29",
       "superproperty": ["6"],
       "pos": [2283.4, -1129.89]
     },

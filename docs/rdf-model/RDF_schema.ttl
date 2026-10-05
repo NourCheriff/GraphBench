@@ -6,7 +6,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ocel: <https://graphbench.org/ocel#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://graphbench.org/order-management> .
+@base <https://graphbench.org/order-management#> .
 
 <https://graphbench.org/order-management> rdf:type owl:Ontology ;
                                            owl:versionIRI <https://graphbench.org/order-management/1.0.0> .
@@ -143,8 +143,8 @@ om:places rdf:type owl:ObjectProperty ;
 ###  https://graphbench.org/order-management#primarySalesRep
 om:primarySalesRep rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf ocel:relatedTo ;
-                   rdfs:domain om:Customer ;
-                   rdfs:range om:Employee .
+                   rdfs:domain om:Employee ;
+                   rdfs:range om:Customer .
 
 
 ###  https://graphbench.org/order-management#product
@@ -164,8 +164,8 @@ om:salesPerson rdf:type owl:ObjectProperty ;
 ###  https://graphbench.org/order-management#secondarySalesRep
 om:secondarySalesRep rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf ocel:relatedTo ;
-                     rdfs:domain om:Customer ;
-                     rdfs:range om:Employee .
+                     rdfs:domain om:Employee ;
+                     rdfs:range om:Customer .
 
 
 ###  https://graphbench.org/order-management#shippedBy
