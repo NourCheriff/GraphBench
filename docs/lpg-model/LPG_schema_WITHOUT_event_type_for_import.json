@@ -1,0 +1,468 @@
+{
+  "style": {
+    "font-family": "Nunito Sans",
+    "background-color": "#F2F2F2",
+    "background-image": "",
+    "background-size": "100%",
+    "node-color": "#4C8EDA",
+    "border-width": 0,
+    "border-color": "#000000",
+    "radius": 75,
+    "node-padding": 5,
+    "node-margin": 2,
+    "outside-position": "auto",
+    "node-icon-image": "",
+    "node-background-image": "",
+    "icon-position": "inside",
+    "icon-size": 64,
+    "caption-position": "inside",
+    "caption-max-width": 200,
+    "caption-color": "#ffffff",
+    "caption-font-size": 20,
+    "caption-font-weight": "normal",
+    "label-position": "inside",
+    "label-display": "bare",
+    "label-color": "#ffffff",
+    "label-background-color": "#848484",
+    "label-border-color": "#848484",
+    "label-border-width": 3,
+    "label-font-size": 20,
+    "label-padding": 5,
+    "label-margin": 4,
+    "directionality": "directed",
+    "detail-position": "above",
+    "detail-orientation": "parallel",
+    "arrow-width": 3,
+    "arrow-color": "#848484",
+    "margin-start": 5,
+    "margin-end": 5,
+    "margin-peer": 20,
+    "attachment-start": "normal",
+    "attachment-end": "normal",
+    "relationship-icon-image": "",
+    "type-color": "#848484",
+    "type-background-color": "#F2F2F2",
+    "type-border-color": "#848484",
+    "type-border-width": 0,
+    "type-font-size": 21,
+    "type-padding": 5,
+    "property-position": "outside",
+    "property-alignment": "colon",
+    "property-color": "#848484",
+    "property-font-size": 20,
+    "property-font-weight": "normal"
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "position": {
+        "x": 184.83859049833026,
+        "y": 784.4848568249404
+      },
+      "caption": "",
+      "labels": [
+        "Order"
+      ],
+      "properties": {
+        "id": "string",
+        "price": "float"
+      },
+      "style": {
+        "property-position": "inside",
+        "property-color": "#ffffff",
+        "label-display": "pill",
+        "label-position": "inside",
+        "label-background-color": "#ffffff",
+        "label-border-color": "#000000",
+        "label-color": "#000000",
+        "label-border-width": 1,
+        "label-padding": 18,
+        "label-margin": 20,
+        "property-alignment": "center",
+        "property-font-weight": "normal",
+        "radius": 100,
+        "node-padding": 5,
+        "border-width": 0
+      }
+    },
+    {
+      "id": "n1",
+      "position": {
+        "x": 1368.178658434152,
+        "y": 929.696712400823
+      },
+      "caption": "",
+      "labels": [
+        "Item"
+      ],
+      "properties": {
+        "id": "string",
+        "weight": "float",
+        "price": "float"
+      },
+      "style": {
+        "property-position": "inside",
+        "property-color": "#ffffff",
+        "label-display": "pill",
+        "label-position": "inside",
+        "label-background-color": "#ffffff",
+        "label-border-color": "#000000",
+        "label-color": "#000000",
+        "label-border-width": 1,
+        "label-padding": 18,
+        "label-margin": 20,
+        "property-alignment": "center",
+        "property-font-weight": "normal",
+        "radius": 100,
+        "node-padding": 5,
+        "border-width": 0
+      }
+    },
+    {
+      "id": "n2",
+      "position": {
+        "x": 1605.3357859418318,
+        "y": 285.4196318780653
+      },
+      "caption": "",
+      "labels": [
+        "Package"
+      ],
+      "properties": {
+        "id": "string",
+        "weight": "float"
+      },
+      "style": {
+        "property-position": "inside",
+        "property-color": "#ffffff",
+        "label-display": "pill",
+        "label-position": "inside",
+        "label-background-color": "#ffffff",
+        "label-border-color": "#000000",
+        "label-color": "#000000",
+        "label-border-width": 1,
+        "label-padding": 18,
+        "label-margin": 20,
+        "property-alignment": "center",
+        "property-font-weight": "normal",
+        "radius": 100,
+        "node-padding": 5,
+        "border-width": 0
+      }
+    },
+    {
+      "id": "n3",
+      "position": {
+        "x": 294.61667101215437,
+        "y": -279.58836690988136
+      },
+      "caption": "",
+      "labels": [
+        "Customer"
+      ],
+      "properties": {
+        "id": "string"
+      },
+      "style": {
+        "property-position": "inside",
+        "property-color": "#ffffff",
+        "label-display": "pill",
+        "label-position": "inside",
+        "label-background-color": "#ffffff",
+        "label-border-color": "#000000",
+        "label-color": "#000000",
+        "label-border-width": 1,
+        "label-padding": 18,
+        "label-margin": 20,
+        "property-alignment": "center",
+        "property-font-weight": "normal",
+        "radius": 100,
+        "node-padding": 5,
+        "border-width": 0
+      }
+    },
+    {
+      "id": "n4",
+      "position": {
+        "x": 1567.2472679678783,
+        "y": -213.6455930688099
+      },
+      "caption": "",
+      "labels": [
+        "Employee"
+      ],
+      "properties": {
+        "id": "string",
+        "role": "string"
+      },
+      "style": {
+        "property-position": "inside",
+        "property-color": "#ffffff",
+        "label-display": "pill",
+        "label-position": "inside",
+        "label-background-color": "#ffffff",
+        "label-border-color": "#000000",
+        "label-color": "#000000",
+        "label-border-width": 1,
+        "label-padding": 18,
+        "label-margin": 20,
+        "property-alignment": "center",
+        "property-font-weight": "normal",
+        "radius": 100,
+        "node-padding": 5,
+        "border-width": 0
+      }
+    },
+    {
+      "id": "n5",
+      "position": {
+        "x": 827.8631881177964,
+        "y": 1162.810264512407
+      },
+      "caption": "",
+      "labels": [
+        "Product"
+      ],
+      "properties": {
+        "id": "string",
+        "weight": "float"
+      },
+      "style": {
+        "property-position": "inside",
+        "property-color": "#ffffff",
+        "label-display": "pill",
+        "label-position": "inside",
+        "label-background-color": "#ffffff",
+        "label-border-color": "#000000",
+        "label-color": "#000000",
+        "label-border-width": 1,
+        "label-padding": 18,
+        "label-margin": 20,
+        "property-alignment": "center",
+        "property-font-weight": "normal",
+        "radius": 100,
+        "node-padding": 5,
+        "border-width": 0
+      }
+    },
+    {
+      "id": "n8",
+      "position": {
+        "x": 876.0429292331042,
+        "y": 285.4196318780653
+      },
+      "caption": "",
+      "labels": [
+        "Event"
+      ],
+      "properties": {
+        "id": "string",
+        "type": "string",
+        "timestamp": "datetime"
+      },
+      "style": {
+        "node-color": "#fb9e00",
+        "property-position": "inside",
+        "property-color": "#ffffff",
+        "label-display": "pill",
+        "label-position": "inside",
+        "label-background-color": "#ffffff",
+        "label-border-color": "#000000",
+        "label-color": "#000000",
+        "label-border-width": 1,
+        "label-padding": 18,
+        "label-margin": 20,
+        "property-alignment": "center",
+        "property-font-weight": "normal",
+        "radius": 100,
+        "node-padding": 5,
+        "border-width": 0
+      }
+    },
+    {
+      "id": "n11",
+      "position": {
+        "x": 184.83859049833026,
+        "y": 1162.810264512407
+      },
+      "caption": "",
+      "style": {
+        "property-position": "inside",
+        "property-color": "#ffffff",
+        "label-display": "pill",
+        "label-position": "inside",
+        "label-background-color": "#ffffff",
+        "label-border-color": "#000000",
+        "label-color": "#000000",
+        "label-border-width": 1,
+        "label-padding": 18,
+        "label-margin": 20,
+        "property-alignment": "center",
+        "property-font-weight": "normal",
+        "radius": 100,
+        "node-padding": 5,
+        "border-width": 0
+      },
+      "labels": [
+        "ProductPrice"
+      ],
+      "properties": {
+        "value": "float",
+        "timestamp": "datetime"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "n0",
+      "fromId": "n8",
+      "toId": "n2",
+      "type": ":INVOLVES",
+      "properties": {
+        "qualifier": "string"
+      },
+      "style": {}
+    },
+    {
+      "id": "n1",
+      "fromId": "n8",
+      "toId": "n1",
+      "type": ":INVOLVES",
+      "properties": {
+        "qualifier": "string"
+      },
+      "style": {}
+    },
+    {
+      "id": "n2",
+      "fromId": "n8",
+      "toId": "n3",
+      "type": ":INVOLVES",
+      "properties": {
+        "qualifier": "string"
+      },
+      "style": {}
+    },
+    {
+      "id": "n3",
+      "fromId": "n8",
+      "toId": "n5",
+      "type": ":INVOLVES",
+      "properties": {
+        "qualifier": "string"
+      },
+      "style": {}
+    },
+    {
+      "id": "n4",
+      "fromId": "n8",
+      "toId": "n0",
+      "type": ":INVOLVES",
+      "properties": {
+        "qualifier": "string"
+      },
+      "style": {}
+    },
+    {
+      "id": "n5",
+      "fromId": "n8",
+      "toId": "n4",
+      "type": ":INVOLVES",
+      "properties": {
+        "qualifier": "string"
+      },
+      "style": {}
+    },
+    {
+      "id": "n7",
+      "fromId": "n3",
+      "toId": "n0",
+      "type": ":PLACES",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n8",
+      "fromId": "n1",
+      "toId": "n5",
+      "type": ":IS_A",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n9",
+      "fromId": "n0",
+      "toId": "n1",
+      "type": ":INCLUDES",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n10",
+      "fromId": "n2",
+      "toId": "n1",
+      "type": ":CONTAINS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n11",
+      "fromId": "n2",
+      "toId": "n4",
+      "type": ":PACKED_BY",
+      "properties": {},
+      "style": {
+        "attachment-start": "left"
+      }
+    },
+    {
+      "id": "n12",
+      "fromId": "n2",
+      "toId": "n4",
+      "type": ":FORWARDED_BY",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n13",
+      "fromId": "n2",
+      "toId": "n4",
+      "type": ":SHIPPED_BY",
+      "properties": {},
+      "style": {
+        "detail-position": "inline",
+        "attachment-start": "right",
+        "attachment-end": "normal"
+      }
+    },
+    {
+      "id": "n14",
+      "fromId": "n4",
+      "toId": "n3",
+      "type": ":PRIMARY_SALES_REP",
+      "properties": {},
+      "style": {
+        "detail-position": "below",
+        "attachment-start": "normal"
+      }
+    },
+    {
+      "id": "n15",
+      "fromId": "n4",
+      "toId": "n3",
+      "type": ":SECONDARY_SALES_REP",
+      "properties": {},
+      "style": {
+        "attachment-start": "top"
+      }
+    },
+    {
+      "id": "n16",
+      "type": ":HAS_PRICE",
+      "style": {},
+      "properties": {},
+      "fromId": "n5",
+      "toId": "n11"
+    }
+  ]
+}
