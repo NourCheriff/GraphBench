@@ -56,8 +56,8 @@
     {
       "id": "n0",
       "position": {
-        "x": -219.65962970676492,
-        "y": 831.296811329635
+        "x": 184.83859049833026,
+        "y": 784.4848568249404
       },
       "caption": "",
       "labels": [
@@ -88,8 +88,8 @@
     {
       "id": "n1",
       "position": {
-        "x": 1131.719502813347,
-        "y": 1098.720945266479
+        "x": 1368.178658434152,
+        "y": 929.696712400823
       },
       "caption": "",
       "labels": [
@@ -121,8 +121,8 @@
     {
       "id": "n2",
       "position": {
-        "x": 1614.366809706835,
-        "y": 711.6911230187036
+        "x": 1605.3357859418318,
+        "y": 285.4196318780653
       },
       "caption": "",
       "labels": [
@@ -153,8 +153,8 @@
     {
       "id": "n3",
       "position": {
-        "x": 228.0286058238629,
-        "y": -268.57222121502355
+        "x": 294.61667101215437,
+        "y": -279.58836690988136
       },
       "caption": "",
       "labels": [
@@ -216,8 +216,8 @@
     {
       "id": "n5",
       "position": {
-        "x": 204.1835418040323,
-        "y": 1308.7235731569067
+        "x": 827.8631881177964,
+        "y": 1162.810264512407
       },
       "caption": "",
       "labels": [
@@ -225,8 +225,7 @@
       ],
       "properties": {
         "id": "string",
-        "weight": "float",
-        "price": "float"
+        "weight": "float"
       },
       "style": {
         "property-position": "inside",
@@ -258,7 +257,7 @@
       ],
       "properties": {
         "id": "string",
-        "timestamp": "string"
+        "timestamp": "datetime"
       },
       "style": {
         "node-color": "#fb9e00",
@@ -282,8 +281,8 @@
     {
       "id": "n9",
       "position": {
-        "x": 910.9797003465465,
-        "y": -566.4072041990912
+        "x": 876.0429292331042,
+        "y": -593.2928408275567
       },
       "caption": "",
       "labels": [
@@ -309,6 +308,38 @@
         "radius": 100,
         "node-padding": 5,
         "border-width": 0
+      }
+    },
+    {
+      "id": "n11",
+      "position": {
+        "x": 184.83859049833026,
+        "y": 1162.810264512407
+      },
+      "caption": "",
+      "style": {
+        "property-position": "inside",
+        "property-color": "#ffffff",
+        "label-display": "pill",
+        "label-position": "inside",
+        "label-background-color": "#ffffff",
+        "label-border-color": "#000000",
+        "label-color": "#000000",
+        "label-border-width": 1,
+        "label-padding": 18,
+        "label-margin": 20,
+        "property-alignment": "center",
+        "property-font-weight": "normal",
+        "radius": 100,
+        "node-padding": 5,
+        "border-width": 0
+      },
+      "labels": [
+        "ProductPrice"
+      ],
+      "properties": {
+        "value": "float",
+        "timestamp": "datetime"
       }
     }
   ],
@@ -419,7 +450,9 @@
       "toId": "n4",
       "type": ":PACKED_BY",
       "properties": {},
-      "style": {}
+      "style": {
+        "attachment-start": "left"
+      }
     },
     {
       "id": "n12",
@@ -435,7 +468,11 @@
       "toId": "n4",
       "type": ":SHIPPED_BY",
       "properties": {},
-      "style": {}
+      "style": {
+        "detail-position": "inline",
+        "attachment-start": "right",
+        "attachment-end": "normal"
+      }
     },
     {
       "id": "n14",
@@ -444,7 +481,8 @@
       "type": ":PRIMARY_SALES_REP",
       "properties": {},
       "style": {
-        "detail-position": "below"
+        "detail-position": "below",
+        "attachment-start": "normal"
       }
     },
     {
@@ -453,7 +491,17 @@
       "toId": "n3",
       "type": ":SECONDARY_SALES_REP",
       "properties": {},
-      "style": {}
+      "style": {
+        "attachment-start": "top"
+      }
+    },
+    {
+      "id": "n16",
+      "type": ":HAS_PRICE",
+      "style": {},
+      "properties": {},
+      "fromId": "n5",
+      "toId": "n11"
     }
   ]
 }
