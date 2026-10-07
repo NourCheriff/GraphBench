@@ -1,0 +1,2706 @@
+{
+  "_comment": "Created with OWL2VOWL (version 0.3.7), http://vowl.visualdataweb.org [Additional Information added by WebVOWL Exporter Version: 1.1.7]",
+  "header": {
+    "baseIris": [
+      "https://graphbench.org/order-management",
+      "http://www.w3.org/2000/01/rdf-schema",
+      "https://graphbench.org/ocel",
+      "http://www.w3.org/2001/XMLSchema"
+    ],
+    "prefixList": {
+      "owl": "http://www.w3.org/2002/07/owl#",
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "ocel": "https://graphbench.org/ocel#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "": "https://graphbench.org/order-management#",
+      "xml": "http://www.w3.org/XML/1998/namespace",
+      "om": "https://graphbench.org/order-management#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+    },
+    "iri": "https://graphbench.org/order-management"
+  },
+  "namespace": [],
+  "settings": {
+    "global": {
+      "zoom": "0.22",
+      "translation": [
+        245,
+        326
+      ],
+      "paused": true
+    },
+    "gravity": {
+      "classDistance": 200,
+      "datatypeDistance": 120
+    },
+    "filter": {
+      "checkBox": [
+        {
+          "id": "datatypeFilterCheckbox",
+          "checked": false
+        },
+        {
+          "id": "objectPropertyFilterCheckbox",
+          "checked": false
+        },
+        {
+          "id": "subclassFilterCheckbox",
+          "checked": false
+        },
+        {
+          "id": "disjointFilterCheckbox",
+          "checked": true
+        },
+        {
+          "id": "setoperatorFilterCheckbox",
+          "checked": false
+        }
+      ],
+      "degreeSliderValue": "0"
+    },
+    "modes": {
+      "checkBox": [
+        {
+          "id": "pickandpinModuleCheckbox",
+          "checked": false
+        },
+        {
+          "id": "nodescalingModuleCheckbox",
+          "checked": true
+        },
+        {
+          "id": "compactnotationModuleCheckbox",
+          "checked": false
+        },
+        {
+          "id": "colorexternalsModuleCheckbox",
+          "checked": true
+        }
+      ],
+      "colorSwitchState": false
+    }
+  },
+  "class": [
+    {
+      "id": "1",
+      "type": "owl:Class"
+    },
+    {
+      "id": "2",
+      "type": "owl:Class"
+    },
+    {
+      "id": "3",
+      "type": "owl:Class"
+    },
+    {
+      "id": "4",
+      "type": "owl:Class"
+    },
+    {
+      "id": "5",
+      "type": "owl:Class"
+    },
+    {
+      "id": "6",
+      "type": "owl:Class"
+    },
+    {
+      "id": "7",
+      "type": "owl:Class"
+    },
+    {
+      "id": "8",
+      "type": "owl:Class"
+    },
+    {
+      "id": "9",
+      "type": "owl:Class"
+    },
+    {
+      "id": "10",
+      "type": "owl:Class"
+    },
+    {
+      "id": "11",
+      "type": "owl:Class"
+    },
+    {
+      "id": "12",
+      "type": "owl:Class"
+    },
+    {
+      "id": "13",
+      "type": "owl:Class"
+    },
+    {
+      "id": "14",
+      "type": "owl:Class"
+    },
+    {
+      "id": "15",
+      "type": "owl:Class"
+    },
+    {
+      "id": "16",
+      "type": "owl:Class"
+    },
+    {
+      "id": "17",
+      "type": "owl:Class"
+    },
+    {
+      "id": "18",
+      "type": "owl:Class"
+    },
+    {
+      "id": "19",
+      "type": "owl:Class"
+    },
+    {
+      "id": "20",
+      "type": "owl:Class"
+    },
+    {
+      "id": "46",
+      "type": "rdfs:Datatype"
+    },
+    {
+      "id": "47",
+      "type": "owl:unionOf"
+    },
+    {
+      "id": "49",
+      "type": "rdfs:Datatype"
+    },
+    {
+      "id": "51",
+      "type": "rdfs:Datatype"
+    },
+    {
+      "id": "52",
+      "type": "owl:unionOf"
+    },
+    {
+      "id": "54",
+      "type": "rdfs:Datatype"
+    },
+    {
+      "id": "56",
+      "type": "rdfs:Datatype"
+    },
+    {
+      "id": "57",
+      "type": "owl:unionOf"
+    }
+  ],
+  "classAttribute": [
+    {
+      "id": "1",
+      "iri": "https://graphbench.org/ocel#AttributeValue",
+      "baseIri": "https://graphbench.org/ocel",
+      "label": {
+        "IRI-based": "AttributeValue"
+      },
+      "attributes": [
+        "external"
+      ],
+      "pos": [
+        1540.91,
+        1186.36
+      ]
+    },
+    {
+      "id": "2",
+      "iri": "https://graphbench.org/ocel#Event",
+      "baseIri": "https://graphbench.org/ocel",
+      "label": {
+        "IRI-based": "Event"
+      },
+      "attributes": [
+        "external"
+      ],
+      "pos": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "3",
+      "iri": "https://graphbench.org/ocel#Object",
+      "baseIri": "https://graphbench.org/ocel",
+      "label": {
+        "IRI-based": "Object"
+      },
+      "attributes": [
+        "external"
+      ],
+      "pos": [
+        3400,
+        150
+      ]
+    },
+    {
+      "id": "4",
+      "iri": "https://graphbench.org/order-management#ConfirmOrder",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "ConfirmOrder"
+      },
+      "pos": [
+        -505.53,
+        594
+      ]
+    },
+    {
+      "id": "5",
+      "iri": "https://graphbench.org/order-management#CreatePackage",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "CreatePackage"
+      },
+      "pos": [
+        -708.07,
+        -327.17
+      ]
+    },
+    {
+      "id": "6",
+      "iri": "https://graphbench.org/order-management#Customer",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "Customer"
+      },
+      "pos": [
+        1500,
+        -950
+      ]
+    },
+    {
+      "id": "7",
+      "iri": "https://graphbench.org/order-management#Employee",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "Employee"
+      },
+      "pos": [
+        2268.18,
+        -754.55
+      ]
+    },
+    {
+      "id": "8",
+      "iri": "https://graphbench.org/order-management#FailedDelivery",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "FailedDelivery"
+      },
+      "pos": [
+        -505.53,
+        -594
+      ]
+    },
+    {
+      "id": "9",
+      "iri": "https://graphbench.org/order-management#Item",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "Item"
+      },
+      "pos": [
+        1500,
+        250
+      ]
+    },
+    {
+      "id": "10",
+      "iri": "https://graphbench.org/order-management#ItemOutOfStock",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "ItemOutOfStock"
+      },
+      "pos": [
+        -761.8,
+        167.49
+      ]
+    },
+    {
+      "id": "11",
+      "iri": "https://graphbench.org/order-management#Order",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "Order"
+      },
+      "pos": [
+        1531.82,
+        -713.64
+      ]
+    },
+    {
+      "id": "12",
+      "iri": "https://graphbench.org/order-management#Package",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "Package"
+      },
+      "pos": [
+        2309.09,
+        418.18
+      ]
+    },
+    {
+      "id": "13",
+      "iri": "https://graphbench.org/order-management#PackageDelivered",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "PackageDelivered"
+      },
+      "pos": [
+        -366.19,
+        -688.7
+      ]
+    },
+    {
+      "id": "14",
+      "iri": "https://graphbench.org/order-management#PayOrder",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "PayOrder"
+      },
+      "pos": [
+        -708.07,
+        327.17
+      ]
+    },
+    {
+      "id": "15",
+      "iri": "https://graphbench.org/order-management#PaymentReminder",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "PaymentReminder"
+      },
+      "pos": [
+        -621.29,
+        471.59
+      ]
+    },
+    {
+      "id": "16",
+      "iri": "https://graphbench.org/order-management#PickItem",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "PickItem"
+      },
+      "pos": [
+        -761.8,
+        -167.49
+      ]
+    },
+    {
+      "id": "17",
+      "iri": "https://graphbench.org/order-management#PlaceOrder",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "PlaceOrder"
+      },
+      "pos": [
+        -366.19,
+        688.7
+      ]
+    },
+    {
+      "id": "18",
+      "iri": "https://graphbench.org/order-management#Product",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "Product"
+      },
+      "pos": [
+        1500,
+        950
+      ]
+    },
+    {
+      "id": "19",
+      "iri": "https://graphbench.org/order-management#ReorderItem",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "ReorderItem"
+      },
+      "pos": [
+        -780,
+        0
+      ]
+    },
+    {
+      "id": "20",
+      "iri": "https://graphbench.org/order-management#SendPackage",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "SendPackage"
+      },
+      "pos": [
+        -621.29,
+        -471.59
+      ]
+    },
+    {
+      "id": "46",
+      "iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "baseIri": "http://www.w3.org/2001/XMLSchema",
+      "label": {
+        "IRI-based": "dateTime"
+      },
+      "attributes": [
+        "datatype"
+      ],
+      "pos": [
+        681.82,
+        1031.82
+      ]
+    },
+    {
+      "id": "47",
+      "attributes": [
+        "anonymous",
+        "union"
+      ],
+      "pos": [
+        809.09,
+        827.27
+      ]
+    },
+    {
+      "id": "49",
+      "iri": "http://www.w3.org/2001/XMLSchema#float",
+      "baseIri": "http://www.w3.org/2001/XMLSchema",
+      "label": {
+        "IRI-based": "float"
+      },
+      "attributes": [
+        "datatype"
+      ],
+      "pos": [
+        1572.73,
+        1340.91
+      ]
+    },
+    {
+      "id": "51",
+      "iri": "http://www.w3.org/2001/XMLSchema#float",
+      "baseIri": "http://www.w3.org/2001/XMLSchema",
+      "label": {
+        "IRI-based": "float"
+      },
+      "attributes": [
+        "datatype"
+      ],
+      "pos": [
+        2013.64,
+        -324.55
+      ]
+    },
+    {
+      "id": "52",
+      "attributes": [
+        "anonymous",
+        "union"
+      ],
+      "pos": [
+        1750,
+        -180
+      ]
+    },
+    {
+      "id": "54",
+      "iri": "http://www.w3.org/2001/XMLSchema#string",
+      "baseIri": "http://www.w3.org/2001/XMLSchema",
+      "label": {
+        "IRI-based": "string"
+      },
+      "attributes": [
+        "datatype"
+      ],
+      "pos": [
+        2572.73,
+        -700
+      ]
+    },
+    {
+      "id": "56",
+      "iri": "http://www.w3.org/2001/XMLSchema#float",
+      "baseIri": "http://www.w3.org/2001/XMLSchema",
+      "label": {
+        "IRI-based": "float"
+      },
+      "attributes": [
+        "datatype"
+      ],
+      "pos": [
+        2181.82,
+        586.36
+      ]
+    },
+    {
+      "id": "57",
+      "attributes": [
+        "anonymous",
+        "union"
+      ],
+      "pos": [
+        1781.82,
+        654.55
+      ]
+    }
+  ],
+  "property": [
+    {
+      "id": "21",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "22",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "23",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "24",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "25",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "26",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "27",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "28",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "29",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "30",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "31",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "32",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "33",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "34",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "35",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "36",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "37",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "38",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "39",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "40",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "41",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "42",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "43",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "44",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "45",
+      "type": "owl:ObjectProperty"
+    },
+    {
+      "id": "GENERATED-UNION-47-1-0",
+      "type": "setOperatorProperty"
+    },
+    {
+      "id": "GENERATED-UNION-47-2-1",
+      "type": "setOperatorProperty"
+    },
+    {
+      "id": "48",
+      "type": "owl:DatatypeProperty"
+    },
+    {
+      "id": "50",
+      "type": "owl:DatatypeProperty"
+    },
+    {
+      "id": "GENERATED-UNION-52-9-0",
+      "type": "setOperatorProperty"
+    },
+    {
+      "id": "GENERATED-UNION-52-11-1",
+      "type": "setOperatorProperty"
+    },
+    {
+      "id": "53",
+      "type": "owl:DatatypeProperty"
+    },
+    {
+      "id": "55",
+      "type": "owl:DatatypeProperty"
+    },
+    {
+      "id": "GENERATED-UNION-57-9-0",
+      "type": "setOperatorProperty"
+    },
+    {
+      "id": "GENERATED-UNION-57-12-1",
+      "type": "setOperatorProperty"
+    },
+    {
+      "id": "GENERATED-UNION-57-18-2",
+      "type": "setOperatorProperty"
+    },
+    {
+      "id": "58",
+      "type": "owl:DatatypeProperty"
+    },
+    {
+      "id": "59",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "60",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "61",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "62",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "63",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "64",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "65",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "66",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "67",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "68",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "69",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "70",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "71",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "72",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "73",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "74",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "75",
+      "type": "rdfs:subClassOf"
+    },
+    {
+      "id": "76",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "77",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "78",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "79",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "80",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "81",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "82",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "83",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "84",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "85",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "86",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "87",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "88",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "89",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "90",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "91",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "92",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "93",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "94",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "95",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "96",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "97",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "98",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "99",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "100",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "101",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "102",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "103",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "104",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "105",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "106",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "107",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "108",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "109",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "110",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "111",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "112",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "113",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "114",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "115",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "116",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "117",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "118",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "119",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "120",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "121",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "122",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "123",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "124",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "125",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "126",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "127",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "128",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "129",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "130",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "131",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "132",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "133",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "134",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "135",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "136",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "137",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "138",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "139",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "140",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "141",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "142",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "143",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "144",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "145",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "146",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "147",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "148",
+      "type": "owl:disjointWith"
+    }
+  ],
+  "propertyAttribute": [
+    {
+      "id": "21",
+      "iri": "https://graphbench.org/ocel#hasObject",
+      "baseIri": "https://graphbench.org/ocel",
+      "label": {
+        "IRI-based": "hasObject"
+      },
+      "attributes": [
+        "object",
+        "external"
+      ],
+      "domain": "2",
+      "range": "3",
+      "subproperty": [
+        "26",
+        "27",
+        "28",
+        "30",
+        "33",
+        "34",
+        "37",
+        "40",
+        "41",
+        "44",
+        "45"
+      ],
+      "pos": [
+        1700,
+        75
+      ]
+    },
+    {
+      "id": "22",
+      "iri": "https://graphbench.org/ocel#relatedTo",
+      "baseIri": "https://graphbench.org/ocel",
+      "label": {
+        "IRI-based": "relatedTo"
+      },
+      "attributes": [
+        "object",
+        "external"
+      ],
+      "domain": "3",
+      "range": "3",
+      "subproperty": [
+        "23",
+        "24",
+        "25",
+        "29",
+        "32",
+        "35",
+        "36",
+        "38",
+        "39",
+        "42",
+        "43"
+      ],
+      "pos": [
+        3291.82,
+        374.55
+      ]
+    },
+    {
+      "id": "23",
+      "iri": "https://graphbench.org/order-management#belongsToOrder",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "belongsToOrder"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "9",
+      "range": "11",
+      "superproperty": [
+        "22"
+      ],
+      "inverse": "24",
+      "pos": [
+        1515.91,
+        -231.82
+      ]
+    },
+    {
+      "id": "24",
+      "iri": "https://graphbench.org/order-management#comprises",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "comprises"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "11",
+      "range": "9",
+      "superproperty": [
+        "22"
+      ],
+      "inverse": "23"
+    },
+    {
+      "id": "25",
+      "iri": "https://graphbench.org/order-management#contains",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "contains"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "12",
+      "range": "9",
+      "superproperty": [
+        "22"
+      ],
+      "inverse": "36",
+      "pos": [
+        1904.55,
+        334.09
+      ]
+    },
+    {
+      "id": "26",
+      "iri": "https://graphbench.org/order-management#creates",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "creates"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "12",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        1006.62,
+        364.48
+      ]
+    },
+    {
+      "id": "27",
+      "iri": "https://graphbench.org/order-management#customer",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "customer"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "6",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        750,
+        -475
+      ]
+    },
+    {
+      "id": "28",
+      "iri": "https://graphbench.org/order-management#employee",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "employee"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "7",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        1162.84,
+        -413.11
+      ]
+    },
+    {
+      "id": "29",
+      "iri": "https://graphbench.org/order-management#forwardedBy",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "forwardedBy"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "12",
+      "range": "7",
+      "superproperty": [
+        "22"
+      ],
+      "pos": [
+        2350,
+        -97.5
+      ]
+    },
+    {
+      "id": "30",
+      "iri": "https://graphbench.org/order-management#forwarder",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "forwarder"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "7",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        1222.63,
+        -218.56
+      ]
+    },
+    {
+      "id": "31",
+      "iri": "https://graphbench.org/order-management#hasPrice",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "hasPrice"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "18",
+      "range": "1",
+      "pos": [
+        1520.45,
+        1068.18
+      ]
+    },
+    {
+      "id": "32",
+      "iri": "https://graphbench.org/order-management#isA",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "isA"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "9",
+      "range": "18",
+      "superproperty": [
+        "22"
+      ],
+      "pos": [
+        1500,
+        600
+      ]
+    },
+    {
+      "id": "33",
+      "iri": "https://graphbench.org/order-management#item",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "item"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "9",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        750,
+        125
+      ]
+    },
+    {
+      "id": "34",
+      "iri": "https://graphbench.org/order-management#order",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "order"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "11",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        765.91,
+        -356.82
+      ]
+    },
+    {
+      "id": "35",
+      "iri": "https://graphbench.org/order-management#packedBy",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "packedBy"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "12",
+      "range": "7",
+      "superproperty": [
+        "22"
+      ],
+      "pos": [
+        2099.09,
+        -228.27
+      ]
+    },
+    {
+      "id": "36",
+      "iri": "https://graphbench.org/order-management#packedInto",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "packedInto"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "9",
+      "range": "12",
+      "superproperty": [
+        "22"
+      ],
+      "inverse": "25"
+    },
+    {
+      "id": "37",
+      "iri": "https://graphbench.org/order-management#packer",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "packer"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "7",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        1112.61,
+        -459.77
+      ]
+    },
+    {
+      "id": "38",
+      "iri": "https://graphbench.org/order-management#places",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "places"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "6",
+      "range": "11",
+      "superproperty": [
+        "22"
+      ],
+      "pos": [
+        1515.91,
+        -831.82
+      ]
+    },
+    {
+      "id": "39",
+      "iri": "https://graphbench.org/order-management#primarySalesRepOf",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "primarySalesRepOf"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "7",
+      "range": "6",
+      "superproperty": [
+        "22"
+      ],
+      "pos": [
+        1930.37,
+        -815.54
+      ]
+    },
+    {
+      "id": "40",
+      "iri": "https://graphbench.org/order-management#product",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "product"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "18",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        750,
+        475
+      ]
+    },
+    {
+      "id": "41",
+      "iri": "https://graphbench.org/order-management#salesPerson",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "salesPerson"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "7",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        1422.16,
+        -411.89
+      ]
+    },
+    {
+      "id": "42",
+      "iri": "https://graphbench.org/order-management#secondarySalesRepOf",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "secondarySalesRepOf"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "7",
+      "range": "6",
+      "superproperty": [
+        "22"
+      ],
+      "pos": [
+        1857.18,
+        -943.01
+      ]
+    },
+    {
+      "id": "43",
+      "iri": "https://graphbench.org/order-management#shippedBy",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "shippedBy"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "12",
+      "range": "7",
+      "superproperty": [
+        "22"
+      ],
+      "pos": [
+        2560,
+        -171.27
+      ]
+    },
+    {
+      "id": "44",
+      "iri": "https://graphbench.org/order-management#shippedPackage",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "shippedPackage"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "12",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        1076.06,
+        252.7
+      ]
+    },
+    {
+      "id": "45",
+      "iri": "https://graphbench.org/order-management#shipper",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "shipper"
+      },
+      "attributes": [
+        "object"
+      ],
+      "domain": "2",
+      "range": "7",
+      "superproperty": [
+        "21"
+      ],
+      "pos": [
+        1308.75,
+        -324.32
+      ]
+    },
+    {
+      "id": "GENERATED-UNION-47-1-0",
+      "domain": "47",
+      "range": "1",
+      "pos": [
+        1175,
+        1006.82
+      ]
+    },
+    {
+      "id": "GENERATED-UNION-47-2-1",
+      "domain": "47",
+      "range": "2",
+      "pos": [
+        404.55,
+        413.64
+      ]
+    },
+    {
+      "id": "48",
+      "iri": "https://graphbench.org/ocel#time",
+      "baseIri": "https://graphbench.org/ocel",
+      "label": {
+        "IRI-based": "time"
+      },
+      "attributes": [
+        "datatype",
+        "functional",
+        "external"
+      ],
+      "domain": "47",
+      "range": "46",
+      "pos": [
+        735.36,
+        945.77
+      ]
+    },
+    {
+      "id": "50",
+      "iri": "https://graphbench.org/ocel#value",
+      "baseIri": "https://graphbench.org/ocel",
+      "label": {
+        "IRI-based": "value"
+      },
+      "attributes": [
+        "datatype",
+        "functional",
+        "external"
+      ],
+      "domain": "1",
+      "range": "49",
+      "pos": [
+        1560.83,
+        1283.12
+      ]
+    },
+    {
+      "id": "GENERATED-UNION-52-9-0",
+      "domain": "52",
+      "range": "9",
+      "pos": [
+        1625,
+        35
+      ]
+    },
+    {
+      "id": "GENERATED-UNION-52-11-1",
+      "domain": "52",
+      "range": "11",
+      "pos": [
+        1640.91,
+        -446.82
+      ]
+    },
+    {
+      "id": "53",
+      "iri": "https://graphbench.org/order-management#price",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "price"
+      },
+      "attributes": [
+        "datatype",
+        "functional"
+      ],
+      "domain": "52",
+      "range": "51",
+      "pos": [
+        1894.62,
+        -259.29
+      ]
+    },
+    {
+      "id": "55",
+      "iri": "https://graphbench.org/order-management#role",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "role"
+      },
+      "attributes": [
+        "datatype",
+        "functional"
+      ],
+      "domain": "7",
+      "range": "54",
+      "pos": [
+        2432.81,
+        -725.06
+      ]
+    },
+    {
+      "id": "GENERATED-UNION-57-9-0",
+      "domain": "57",
+      "range": "9",
+      "pos": [
+        1640.91,
+        452.27
+      ]
+    },
+    {
+      "id": "GENERATED-UNION-57-12-1",
+      "domain": "57",
+      "range": "12",
+      "pos": [
+        2045.45,
+        536.36
+      ]
+    },
+    {
+      "id": "GENERATED-UNION-57-18-2",
+      "domain": "57",
+      "range": "18",
+      "pos": [
+        1640.91,
+        802.27
+      ]
+    },
+    {
+      "id": "58",
+      "iri": "https://graphbench.org/order-management#weight",
+      "baseIri": "https://graphbench.org/order-management",
+      "label": {
+        "IRI-based": "weight"
+      },
+      "attributes": [
+        "datatype",
+        "functional"
+      ],
+      "domain": "57",
+      "range": "56",
+      "pos": [
+        1995.71,
+        618.09
+      ]
+    },
+    {
+      "id": "59",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "2",
+      "pos": [
+        -252.76,
+        297
+      ]
+    },
+    {
+      "id": "60",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "2",
+      "pos": [
+        -354.04,
+        -163.59
+      ]
+    },
+    {
+      "id": "61",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "8",
+      "range": "2",
+      "pos": [
+        -252.76,
+        -297
+      ]
+    },
+    {
+      "id": "62",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "10",
+      "range": "2",
+      "pos": [
+        -380.9,
+        83.75
+      ]
+    },
+    {
+      "id": "63",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "13",
+      "range": "2",
+      "pos": [
+        -183.09,
+        -344.35
+      ]
+    },
+    {
+      "id": "64",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "14",
+      "range": "2",
+      "pos": [
+        -354.04,
+        163.59
+      ]
+    },
+    {
+      "id": "65",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "15",
+      "range": "2",
+      "pos": [
+        -310.64,
+        235.79
+      ]
+    },
+    {
+      "id": "66",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "16",
+      "range": "2",
+      "pos": [
+        -380.9,
+        -83.75
+      ]
+    },
+    {
+      "id": "67",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "17",
+      "range": "2",
+      "pos": [
+        -183.09,
+        344.35
+      ]
+    },
+    {
+      "id": "68",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "19",
+      "range": "2",
+      "pos": [
+        -390,
+        0
+      ]
+    },
+    {
+      "id": "69",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "20",
+      "range": "2",
+      "pos": [
+        -310.64,
+        -235.79
+      ]
+    },
+    {
+      "id": "70",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "6",
+      "range": "3",
+      "pos": [
+        2450,
+        -400
+      ]
+    },
+    {
+      "id": "71",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "7",
+      "range": "3",
+      "pos": [
+        2834.09,
+        -302.27
+      ]
+    },
+    {
+      "id": "72",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "9",
+      "range": "3",
+      "pos": [
+        2450,
+        200
+      ]
+    },
+    {
+      "id": "73",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "11",
+      "range": "3",
+      "pos": [
+        2465.91,
+        -281.82
+      ]
+    },
+    {
+      "id": "74",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "12",
+      "range": "3",
+      "pos": [
+        2854.55,
+        284.09
+      ]
+    },
+    {
+      "id": "75",
+      "label": "Subclass of",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "18",
+      "range": "3",
+      "pos": [
+        2450,
+        550
+      ]
+    },
+    {
+      "id": "76",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "1",
+      "range": "2"
+    },
+    {
+      "id": "77",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "1",
+      "range": "3"
+    },
+    {
+      "id": "78",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "2",
+      "range": "3"
+    },
+    {
+      "id": "79",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "5"
+    },
+    {
+      "id": "80",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "8"
+    },
+    {
+      "id": "81",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "10"
+    },
+    {
+      "id": "82",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "13"
+    },
+    {
+      "id": "83",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "14"
+    },
+    {
+      "id": "84",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "15"
+    },
+    {
+      "id": "85",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "16"
+    },
+    {
+      "id": "86",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "17"
+    },
+    {
+      "id": "87",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "19"
+    },
+    {
+      "id": "88",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "4",
+      "range": "20"
+    },
+    {
+      "id": "89",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "8"
+    },
+    {
+      "id": "90",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "10"
+    },
+    {
+      "id": "91",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "13"
+    },
+    {
+      "id": "92",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "14"
+    },
+    {
+      "id": "93",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "15"
+    },
+    {
+      "id": "94",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "16"
+    },
+    {
+      "id": "95",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "17"
+    },
+    {
+      "id": "96",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "19"
+    },
+    {
+      "id": "97",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "5",
+      "range": "20"
+    },
+    {
+      "id": "98",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "8",
+      "range": "10"
+    },
+    {
+      "id": "99",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "8",
+      "range": "13"
+    },
+    {
+      "id": "100",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "8",
+      "range": "14"
+    },
+    {
+      "id": "101",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "8",
+      "range": "15"
+    },
+    {
+      "id": "102",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "8",
+      "range": "16"
+    },
+    {
+      "id": "103",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "8",
+      "range": "17"
+    },
+    {
+      "id": "104",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "8",
+      "range": "19"
+    },
+    {
+      "id": "105",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "8",
+      "range": "20"
+    },
+    {
+      "id": "106",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "10",
+      "range": "13"
+    },
+    {
+      "id": "107",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "10",
+      "range": "14"
+    },
+    {
+      "id": "108",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "10",
+      "range": "15"
+    },
+    {
+      "id": "109",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "10",
+      "range": "16"
+    },
+    {
+      "id": "110",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "10",
+      "range": "17"
+    },
+    {
+      "id": "111",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "10",
+      "range": "19"
+    },
+    {
+      "id": "112",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "10",
+      "range": "20"
+    },
+    {
+      "id": "113",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "13",
+      "range": "14"
+    },
+    {
+      "id": "114",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "13",
+      "range": "15"
+    },
+    {
+      "id": "115",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "13",
+      "range": "16"
+    },
+    {
+      "id": "116",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "13",
+      "range": "17"
+    },
+    {
+      "id": "117",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "13",
+      "range": "19"
+    },
+    {
+      "id": "118",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "13",
+      "range": "20"
+    },
+    {
+      "id": "119",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "14",
+      "range": "15"
+    },
+    {
+      "id": "120",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "14",
+      "range": "16"
+    },
+    {
+      "id": "121",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "14",
+      "range": "17"
+    },
+    {
+      "id": "122",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "14",
+      "range": "19"
+    },
+    {
+      "id": "123",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "14",
+      "range": "20"
+    },
+    {
+      "id": "124",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "15",
+      "range": "16"
+    },
+    {
+      "id": "125",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "15",
+      "range": "17"
+    },
+    {
+      "id": "126",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "15",
+      "range": "19"
+    },
+    {
+      "id": "127",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "15",
+      "range": "20"
+    },
+    {
+      "id": "128",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "16",
+      "range": "17"
+    },
+    {
+      "id": "129",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "16",
+      "range": "19"
+    },
+    {
+      "id": "130",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "16",
+      "range": "20"
+    },
+    {
+      "id": "131",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "17",
+      "range": "19"
+    },
+    {
+      "id": "132",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "17",
+      "range": "20"
+    },
+    {
+      "id": "133",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "19",
+      "range": "20"
+    },
+    {
+      "id": "134",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "6",
+      "range": "7"
+    },
+    {
+      "id": "135",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "6",
+      "range": "9"
+    },
+    {
+      "id": "136",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "6",
+      "range": "11"
+    },
+    {
+      "id": "137",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "6",
+      "range": "12"
+    },
+    {
+      "id": "138",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "6",
+      "range": "18"
+    },
+    {
+      "id": "139",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "7",
+      "range": "9"
+    },
+    {
+      "id": "140",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "7",
+      "range": "11"
+    },
+    {
+      "id": "141",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "7",
+      "range": "12"
+    },
+    {
+      "id": "142",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "7",
+      "range": "18"
+    },
+    {
+      "id": "143",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "9",
+      "range": "11"
+    },
+    {
+      "id": "144",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "9",
+      "range": "12"
+    },
+    {
+      "id": "145",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "9",
+      "range": "18"
+    },
+    {
+      "id": "146",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "11",
+      "range": "12"
+    },
+    {
+      "id": "147",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "11",
+      "range": "18"
+    },
+    {
+      "id": "148",
+      "label": "Disjoint With",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "domain": "12",
+      "range": "18"
+    }
+  ]
+}
