@@ -56,8 +56,8 @@
     {
       "id": "n0",
       "position": {
-        "x": 184.83859049833026,
-        "y": 784.4848568249404
+        "x": 112.5,
+        "y": 1139.0732237348218
       },
       "caption": "",
       "labels": [
@@ -88,8 +88,8 @@
     {
       "id": "n1",
       "position": {
-        "x": 1368.178658434152,
-        "y": 929.696712400823
+        "x": 1295.840067935822,
+        "y": 1284.2850793107043
       },
       "caption": "",
       "labels": [
@@ -121,8 +121,8 @@
     {
       "id": "n2",
       "position": {
-        "x": 1605.3357859418318,
-        "y": 285.4196318780653
+        "x": 1532.9971954435016,
+        "y": 640.0079987879467
       },
       "caption": "",
       "labels": [
@@ -153,8 +153,8 @@
     {
       "id": "n3",
       "position": {
-        "x": 294.61667101215437,
-        "y": -279.58836690988136
+        "x": 222.2780805138241,
+        "y": 75
       },
       "caption": "",
       "labels": [
@@ -184,8 +184,8 @@
     {
       "id": "n4",
       "position": {
-        "x": 1567.2472679678783,
-        "y": -213.6455930688099
+        "x": 1494.9086774695481,
+        "y": 140.94277384107147
       },
       "caption": "",
       "labels": [
@@ -216,8 +216,8 @@
     {
       "id": "n5",
       "position": {
-        "x": 827.8631881177964,
-        "y": 1162.810264512407
+        "x": 755.5245976194661,
+        "y": 1517.3986314222884
       },
       "caption": "",
       "labels": [
@@ -246,10 +246,10 @@
       }
     },
     {
-      "id": "n8",
+      "id": "n6",
       "position": {
-        "x": 876.0429292331042,
-        "y": 285.4196318780653
+        "x": 803.704338734774,
+        "y": 640.0079987879467
       },
       "caption": "",
       "labels": [
@@ -280,12 +280,19 @@
       }
     },
     {
-      "id": "n11",
+      "id": "n7",
       "position": {
-        "x": 184.83859049833026,
-        "y": 1162.810264512407
+        "x": 112.5,
+        "y": 1517.3986314222884
       },
       "caption": "",
+      "labels": [
+        "ProductPrice"
+      ],
+      "properties": {
+        "value": "float",
+        "timestamp": "datetime"
+      },
       "style": {
         "property-position": "inside",
         "property-color": "#ffffff",
@@ -302,20 +309,13 @@
         "radius": 100,
         "node-padding": 5,
         "border-width": 0
-      },
-      "labels": [
-        "ProductPrice"
-      ],
-      "properties": {
-        "value": "float",
-        "timestamp": "datetime"
       }
     }
   ],
   "relationships": [
     {
       "id": "n0",
-      "fromId": "n8",
+      "fromId": "n6",
       "toId": "n2",
       "type": ":INVOLVES",
       "properties": {
@@ -325,7 +325,7 @@
     },
     {
       "id": "n1",
-      "fromId": "n8",
+      "fromId": "n6",
       "toId": "n1",
       "type": ":INVOLVES",
       "properties": {
@@ -335,7 +335,7 @@
     },
     {
       "id": "n2",
-      "fromId": "n8",
+      "fromId": "n6",
       "toId": "n3",
       "type": ":INVOLVES",
       "properties": {
@@ -345,7 +345,7 @@
     },
     {
       "id": "n3",
-      "fromId": "n8",
+      "fromId": "n6",
       "toId": "n5",
       "type": ":INVOLVES",
       "properties": {
@@ -355,7 +355,7 @@
     },
     {
       "id": "n4",
-      "fromId": "n8",
+      "fromId": "n6",
       "toId": "n0",
       "type": ":INVOLVES",
       "properties": {
@@ -365,7 +365,7 @@
     },
     {
       "id": "n5",
-      "fromId": "n8",
+      "fromId": "n6",
       "toId": "n4",
       "type": ":INVOLVES",
       "properties": {
@@ -374,7 +374,7 @@
       "style": {}
     },
     {
-      "id": "n7",
+      "id": "n6",
       "fromId": "n3",
       "toId": "n0",
       "type": ":PLACES",
@@ -382,7 +382,7 @@
       "style": {}
     },
     {
-      "id": "n8",
+      "id": "n7",
       "fromId": "n1",
       "toId": "n5",
       "type": ":IS_A",
@@ -390,7 +390,7 @@
       "style": {}
     },
     {
-      "id": "n9",
+      "id": "n8",
       "fromId": "n0",
       "toId": "n1",
       "type": ":INCLUDES",
@@ -398,7 +398,7 @@
       "style": {}
     },
     {
-      "id": "n10",
+      "id": "n9",
       "fromId": "n2",
       "toId": "n1",
       "type": ":CONTAINS",
@@ -406,7 +406,7 @@
       "style": {}
     },
     {
-      "id": "n11",
+      "id": "n10",
       "fromId": "n2",
       "toId": "n4",
       "type": ":PACKED_BY",
@@ -416,7 +416,7 @@
       }
     },
     {
-      "id": "n12",
+      "id": "n11",
       "fromId": "n2",
       "toId": "n4",
       "type": ":FORWARDED_BY",
@@ -424,7 +424,7 @@
       "style": {}
     },
     {
-      "id": "n13",
+      "id": "n12",
       "fromId": "n2",
       "toId": "n4",
       "type": ":SHIPPED_BY",
@@ -436,33 +436,33 @@
       }
     },
     {
-      "id": "n14",
-      "fromId": "n4",
-      "toId": "n3",
-      "type": ":PRIMARY_SALES_REP",
-      "properties": {},
+      "id": "n13",
+      "type": ":PRIMARY_SALES_REP_OF",
       "style": {
         "detail-position": "below",
         "attachment-start": "normal"
-      }
+      },
+      "properties": {},
+      "fromId": "n4",
+      "toId": "n3"
+    },
+    {
+      "id": "n14",
+      "type": ":SECONDARY_SALES_REP_OF",
+      "style": {
+        "attachment-start": "top"
+      },
+      "properties": {},
+      "fromId": "n4",
+      "toId": "n3"
     },
     {
       "id": "n15",
-      "fromId": "n4",
-      "toId": "n3",
-      "type": ":SECONDARY_SALES_REP",
-      "properties": {},
-      "style": {
-        "attachment-start": "top"
-      }
-    },
-    {
-      "id": "n16",
-      "type": ":HAS_PRICE",
-      "style": {},
-      "properties": {},
       "fromId": "n5",
-      "toId": "n11"
+      "toId": "n7",
+      "type": ":HAS_PRICE",
+      "properties": {},
+      "style": {}
     }
   ]
 }

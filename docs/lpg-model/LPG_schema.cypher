@@ -17,7 +17,7 @@ CREATE
     <-[:INVOLVES {
         qualifier: "string"
     }]-
-    (n8:Event {
+    (n6:Event {
         id: "string",
         timestamp: "datetime"
     })
@@ -35,7 +35,7 @@ CREATE
     <-[:INVOLVES {
         qualifier: "string"
     }]-
-    (n8)
+    (n6)
     -[:INVOLVES {
         qualifier: "string"
     }]->
@@ -63,20 +63,20 @@ CREATE
     <-[:INVOLVES {
         qualifier: "string"
     }]-
-    (n8)
+    (n6)
     -[:INVOLVES {
         qualifier: "string"
     }]->
     (n0),
 
-    (n8)
+    (n6)
     -[:OF_TYPE]->
     (:EventType {
         type: "string"
     }),
 
     (n4)
-    -[:PRIMARY_SALES_REP]->
+    -[:PRIMARY_SALES_REP_OF]->
     (n3)
-    <-[:SECONDARY_SALES_REP]-
+    <-[:SECONDARY_SALES_REP_OF]-
     (n4);
