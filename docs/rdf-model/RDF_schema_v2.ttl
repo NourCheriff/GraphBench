@@ -211,13 +211,6 @@ ocel:value rdf:type owl:DatatypeProperty ,
            rdfs:range xsd:float .
 
 
-###  https://graphbench.org/order-management#name
-om:name rdf:type owl:DatatypeProperty ,
-                 owl:FunctionalProperty ;
-        rdfs:domain om:Product ;
-        rdfs:range xsd:string .
-
-
 ###  https://graphbench.org/order-management#price
 om:price rdf:type owl:DatatypeProperty ,
                   owl:FunctionalProperty ;
