@@ -1,0 +1,33 @@
+services:
+  graphdb:
+    image: ontotext/graphdb:10.8.14
+    container_name: graphdb
+    restart: unless-stopped
+    ports:
+      - "7200:7200"
+    volumes:
+      - graphdb-data:/opt/graphdb/home
+    environment:
+      GDB_HEAP_SIZE: "2g"
+
+  neo4j:
+    image: neo4j:5.26.31
+    container_name: neo4j
+    restart: always
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j-data:/data
+      - neo4j-logs:/logs
+      - neo4j-conf:/conf
+      - neo4j-plugin:/plugins
+    environment:
+      - NEO4J_AUTH=neo4j/neo4j-pwd
+  
+volumes:
+  graphdb-data:
+  neo4j-data:
+  neo4j-logs:
+  neo4j-conf:
+  neo4j-plugin:
