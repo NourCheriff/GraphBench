@@ -1,8 +1,10 @@
-from .connector import Driver, get_driver
+from .connector import Neo4jClient
+
+DATABASE = ""
 
 
 def main():
-    with get_driver() as driver:
+    with Neo4jClient() as client:
         print("Neo4j - Connection established")
 
 

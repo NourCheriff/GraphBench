@@ -1,9 +1,10 @@
-from .connector import SPARQLWrapper, get_sparql_wrapper
+from .connector import GraphDBClient
 
 
 def main():
-    sparql = get_sparql_wrapper()
-    print("GraphDB - Connection established")
+    with GraphDBClient() as graphdb:
+        result = graphdb.query("ASK {}")
+        print(result)
 
 
 if __name__ == "__main__":
