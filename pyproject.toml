@@ -1,0 +1,22 @@
+[project]
+name = "graphbench"
+version = "0.1.0"
+description = "Comparative study of RDF triplestore and graph approaches for modeling and querying large OCEL datasets, with a focus on expressiveness and performance."
+readme = "README.md"
+authors = [
+    { name = "NourCheriff", email = "nour.cheriff@proton.me" },
+    { name = "SamueleSacchetti" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "neo4j>=6.4.0",
+    "rdflib>=7.6.0",
+    "sparqlwrapper>=2.0.0",
+]
+
+[project.scripts]
+graphbench = "graphbench:main"
+
+[build-system]
+requires = ["uv_build>=0.12.24,<0.13.0"]
+build-backend = "uv_build"

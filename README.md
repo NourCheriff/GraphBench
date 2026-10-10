@@ -4,19 +4,56 @@ Comparative study of RDF triplestore and graph approaches for modeling and query
 
 ## Table of Contents
 
-1. [Background: OCEL 2.0](#background-ocel-20)
-2. [Dataset](#dataset)
+1. [Project Structure](#project-structure)
+2. [Background: OCEL 2.0](#background-ocel-20)
+3. [Dataset](#dataset)
    1. [Physical Schema (SQLite)](#physical-schema-sqlite)
-3. [Analysis](#analysis)
+4. [Analysis](#analysis)
    1. [Event Types](#event-types)
    2. [Object Types](#object-types)
    3. [Event-to-Object Relationships (E2O)](#event-to-object-relationships-e2o)
    4. [Object-to-Object Relationships (O2O)](#object-to-object-relationships-o2o)
    5. [Domain Considerations](#domain-considerations)
-4. [Knowledge Graph Model](#knowledge-graph-model)
+5. [Knowledge Graph Model](#knowledge-graph-model)
    1. [Neo4j](#neo4j)
    2. [GraphDB](#graphdb)
-5. [Benchmarking](#benchmarking)
+6. [Benchmarking](#benchmarking)
+
+
+---
+
+# Project Structure
+
+The repository is organized into the following directories:
+
+| Directory / File | Description |
+| ---------------- | ----------- |
+| `data/` | Input dataset used by the project, including the OCEL 2.0 Order Management event log. |
+| `docker-compose.yml` | Defines and orchestrates the project's containerized services, including the graph database environments. |
+| `docs/` | Documentation and data-model definitions, including LPG and RDF schemas and their diagrams. |
+| `docs/img/` | Diagrams and visualizations of the OCEL metamodel, LPG model, RDF model, and SQLite schema. |
+| `docs/lpg-model/` | Neo4j/LPG schema definitions and import files. |
+| `docs/rdf-model/` | RDF schema definitions, Turtle files, and GraphDB import/layout files. |
+| `output/` | Generated artifacts produced by the conversion and benchmarking workflows. |
+| `output/benchmark/` | Benchmark results and related generated files. |
+| `output/neo4j/` | Generated Neo4j/Cypher representations of the OCEL dataset. |
+| `output/rdf/` | Generated RDF/Turtle representations of the OCEL dataset. |
+| `queries/` | Queries used for evaluating and comparing the graph models. |
+| `queries/cypher/` | Cypher queries for the Neo4j/LPG model. |
+| `queries/sparql/` | SPARQL queries for the RDF/GraphDB model. |
+| `src/` | Python source code for data conversion and benchmarking. |
+| `src/converters/` | Converters that transform OCEL data into Neo4j/Cypher and RDF/Turtle representations. |
+| `src/benchmark/` | Benchmarking utilities and the benchmark runner. |
+| `requirements.txt` | Python dependencies required by the project. |
+
+## Graph Database Interfaces
+
+When the project is started using `Docker Compose`, the web interfaces of the graph databases are available at:
+
+- **Neo4j:** `http://localhost:7474`
+- **GraphDB:** `http://localhost:7200`
+
+These interfaces can be used to inspect the loaded graph data and execute **Cypher** or **SPARQL** queries, respectively.
 
 ---
 
