@@ -1,6 +1,6 @@
 import json
 from collections.abc import Callable
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -16,7 +16,7 @@ from .models import (
 
 
 def _parse_time(value: str) -> datetime:
-    return datetime.fromisoformat(value)
+    return datetime.fromisoformat(value).astimezone(timezone.utc)
 
 
 _COERCERS: dict[str, Callable[[Any], Any]] = {
