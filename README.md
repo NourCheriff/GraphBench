@@ -19,32 +19,31 @@ Comparative study of RDF triplestore and graph approaches for modeling and query
    2. [GraphDB](#graphdb)
 6. [Benchmarking](#benchmarking)
 
-
 ---
 
 # Project Structure
 
 The repository is organized into the following directories:
 
-| Directory / File | Description |
-| ---------------- | ----------- |
-| `data/` | Input dataset used by the project, including the OCEL 2.0 Order Management event log. |
+| Directory / File     | Description                                                                                               |
+| -------------------- | --------------------------------------------------------------------------------------------------------- |
+| `data/`              | Input dataset used by the project, including the OCEL 2.0 Order Management event log.                     |
 | `docker-compose.yml` | Defines and orchestrates the project's containerized services, including the graph database environments. |
-| `docs/` | Documentation and data-model definitions, including LPG and RDF schemas and their diagrams. |
-| `docs/img/` | Diagrams and visualizations of the OCEL metamodel, LPG model, RDF model, and SQLite schema. |
-| `docs/lpg-model/` | Neo4j/LPG schema definitions and import files. |
-| `docs/rdf-model/` | RDF schema definitions, Turtle files, and GraphDB import/layout files. |
-| `output/` | Generated artifacts produced by the conversion and benchmarking workflows. |
-| `output/benchmark/` | Benchmark results and related generated files. |
-| `output/neo4j/` | Generated Neo4j/Cypher representations of the OCEL dataset. |
-| `output/rdf/` | Generated RDF/Turtle representations of the OCEL dataset. |
-| `queries/` | Queries used for evaluating and comparing the graph models. |
-| `queries/cypher/` | Cypher queries for the Neo4j/LPG model. |
-| `queries/sparql/` | SPARQL queries for the RDF/GraphDB model. |
-| `src/` | Python source code for data conversion and benchmarking. |
-| `src/converters/` | Converters that transform OCEL data into Neo4j/Cypher and RDF/Turtle representations. |
-| `src/benchmark/` | Benchmarking utilities and the benchmark runner. |
-| `requirements.txt` | Python dependencies required by the project. |
+| `docs/`              | Documentation and data-model definitions, including LPG and RDF schemas and their diagrams.               |
+| `docs/img/`          | Diagrams and visualizations of the OCEL metamodel, LPG model, RDF model, and SQLite schema.               |
+| `docs/lpg-model/`    | Neo4j/LPG schema definitions and import files.                                                            |
+| `docs/rdf-model/`    | RDF schema definitions, Turtle files, and GraphDB import/layout files.                                    |
+| `output/`            | Generated artifacts produced by the conversion and benchmarking workflows.                                |
+| `output/benchmark/`  | Benchmark results and related generated files.                                                            |
+| `output/neo4j/`      | Generated Neo4j/Cypher representations of the OCEL dataset.                                               |
+| `output/rdf/`        | Generated RDF/Turtle representations of the OCEL dataset.                                                 |
+| `queries/`           | Queries used for evaluating and comparing the graph models.                                               |
+| `queries/cypher/`    | Cypher queries for the Neo4j/LPG model.                                                                   |
+| `queries/sparql/`    | SPARQL queries for the RDF/GraphDB model.                                                                 |
+| `src/`               | Python source code for data conversion and benchmarking.                                                  |
+| `src/converters/`    | Converters that transform OCEL data into Neo4j/Cypher and RDF/Turtle representations.                     |
+| `src/benchmark/`     | Benchmarking utilities and the benchmark runner.                                                          |
+| `requirements.txt`   | Python dependencies required by the project.                                                              |
 
 ## Graph Database Interfaces
 
@@ -231,7 +230,6 @@ The LPG model represents customers, employees, orders, products, packages, and e
 
 The **blue** nodes represent the **objects**. The **orange** nodes are the events.
 
-
 ## GraphDB
 
 The RDF model is defined in [`docs/rdf-model/RDF_schema.ttl`](docs/rdf-model/RDF_schema.ttl).
@@ -239,6 +237,19 @@ The RDF model is defined in [`docs/rdf-model/RDF_schema.ttl`](docs/rdf-model/RDF
 ![RDF model](docs/img/rdf_model_diagram.png)
 
 Two namespaces are used: `ocel:` for the metamodel concepts (`Event`, `Object`, `AttributeValue`), reusable with any OCEL log, and `om:` for this dataset's types and relationships.
+
+### Generating the RDF dataset
+
+```bash
+uv run python -m graphbench.converters.ocel_to_rdf
+```
+
+The conversion from OCEL 2.0 to RDF runs in four steps:
+
+1. **Read**: the shared `DataReader` loads `data/order-management.json` and normalizes it. The same reader is used by the Neo4j converter, so both graphs start from identical data.
+2. **Build**: events, objects, attributes and E2O/O2O relationships are mapped to the classes and properties of the ontology through the mapping tables at the top of the converter.
+3. **Validate**: every class and property used in the data must be declared in the ontology; otherwise the conversion stops.
+4. **Write**: the graph is saved to `output/rdf/order-management.ttl`.
 
 # Benchmarking
 
