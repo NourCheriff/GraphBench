@@ -18,14 +18,19 @@ _OBJECT_LABELS: dict[str, str] = {
 
 _O2O_RELATIONSHIPS: dict[tuple[str, str, str], str] = {
     ("customers", "places", "orders"): "PLACES",
-    ("customers", "primarySalesRep", "employees"): "PRIMARY_SALES_REP",
-    ("customers", "secondarySalesRep", "employees"): "SECONDARY_SALES_REP",
+    ("customers", "primarySalesRep", "employees"): "PRIMARY_SALES_REP_OF",
+    ("customers", "secondarySalesRep", "employees"): "SECONDARY_SALES_REP_OF",
     ("orders", "comprises", "items"): "INCLUDES",
     ("items", "is a", "products"): "IS_A",
     ("packages", "contains", "items"): "CONTAINS",
     ("packages", "packed by", "employees"): "PACKED_BY",
     ("packages", "forwarded by", "employees"): "FORWARDED_BY",
     ("packages", "shipped by", "employees"): "SHIPPED_BY",
+}
+
+_REVERSED_O2O = {
+    ("customers", "primarySalesRep", "employees"),
+    ("customers", "secondarySalesRep", "employees"),
 }
 
 _VERSIONED_ATTRS: set[tuple[str, str]] = {("products", "price")}
@@ -38,11 +43,13 @@ class CypherGenerator:
         object_labels: dict[str, str] = _OBJECT_LABELS,
         o2o_relationships: dict[tuple[str, str, str], str] = _O2O_RELATIONSHIPS,
         versioned_attrs: set[tuple[str, str]] = _VERSIONED_ATTRS,
+        reversed_o2o: set[tuple[str, str, str]] = _REVERSED_O2O,
     ):
         self._batch_size = batch_size
         self._object_labels = object_labels
         self._o2o_relationships = o2o_relationships
         self._versioned_attrs = versioned_attrs
+        self._reversed_o2o = reversed_o2o
 
     def generate_cypher(self, log: OCELLog) -> Iterator[str]:
         yield "CREATE CONSTRAINT object_id IF NOT EXISTS FOR (o:Object) REQUIRE o.id IS UNIQUE;"
@@ -137,8 +144,13 @@ class CypherGenerator:
                 rel.qualifier,
                 log.objects[rel.target_id].type,
             )
+            source, target = rel.source_id, rel.target_id
+
+            if key in self._reversed_o2o:
+                source, target = target, source
+
             o2o[self._o2o_relationships[key]].append(
-                {"source_id": rel.source_id, "target_id": rel.target_id}
+                {"source_id": source, "target_id": target}
             )
 
         for rel_type, rows in o2o.items():

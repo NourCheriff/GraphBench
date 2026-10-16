@@ -207057,46 +207057,46 @@ MATCH (t:Object {id: row.target_id})
 MERGE (s)-[:CONTAINS]->(t);
 
 UNWIND [
-  {'source_id': 'Danube Pharmaceuticals BV', 'target_id': 'Christine von Dobbert'},
-  {'source_id': 'Carpathian Financial Services plc', 'target_id': 'Jan Niklas Adams'},
-  {'source_id': 'AlpenTech Innovations AG', 'target_id': 'Wil van der Aalst'},
-  {'source_id': 'Balkan Minerals d.o.o.', 'target_id': 'Christine von Dobbert'},
-  {'source_id': 'Riviera Robotics SAS', 'target_id': 'Istvan Koren'},
-  {'source_id': 'Iberian Sun Solaridades SA', 'target_id': 'Christine von Dobbert'},
-  {'source_id': 'Baltic Wave Energies Ltd.', 'target_id': 'Wil van der Aalst'},
-  {'source_id': 'Pantheon Art Gallery Kft.', 'target_id': 'Istvan Koren'},
-  {'source_id': 'Vesta Fashion House GmbH', 'target_id': 'Jan Niklas Adams'},
-  {'source_id': 'Mediterranea Luxury Cruises S.p.A.', 'target_id': 'Wil van der Aalst'},
-  {'source_id': 'Nordica Systems GmbH', 'target_id': 'Wil van der Aalst'},
-  {'source_id': 'Celtica Green Farms Oy', 'target_id': 'Istvan Koren'},
-  {'source_id': 'Golden Fleece Textiles S.A.R.L.', 'target_id': 'Mara Nitschke'},
-  {'source_id': 'SwissPeak Timepieces AG', 'target_id': 'Christine von Dobbert'},
-  {'source_id': 'Eastern Oak Insurance Zrt.', 'target_id': 'Mara Nitschke'}
+  {'source_id': 'Christine von Dobbert', 'target_id': 'Danube Pharmaceuticals BV'},
+  {'source_id': 'Jan Niklas Adams', 'target_id': 'Carpathian Financial Services plc'},
+  {'source_id': 'Wil van der Aalst', 'target_id': 'AlpenTech Innovations AG'},
+  {'source_id': 'Christine von Dobbert', 'target_id': 'Balkan Minerals d.o.o.'},
+  {'source_id': 'Istvan Koren', 'target_id': 'Riviera Robotics SAS'},
+  {'source_id': 'Christine von Dobbert', 'target_id': 'Iberian Sun Solaridades SA'},
+  {'source_id': 'Wil van der Aalst', 'target_id': 'Baltic Wave Energies Ltd.'},
+  {'source_id': 'Istvan Koren', 'target_id': 'Pantheon Art Gallery Kft.'},
+  {'source_id': 'Jan Niklas Adams', 'target_id': 'Vesta Fashion House GmbH'},
+  {'source_id': 'Wil van der Aalst', 'target_id': 'Mediterranea Luxury Cruises S.p.A.'},
+  {'source_id': 'Wil van der Aalst', 'target_id': 'Nordica Systems GmbH'},
+  {'source_id': 'Istvan Koren', 'target_id': 'Celtica Green Farms Oy'},
+  {'source_id': 'Mara Nitschke', 'target_id': 'Golden Fleece Textiles S.A.R.L.'},
+  {'source_id': 'Christine von Dobbert', 'target_id': 'SwissPeak Timepieces AG'},
+  {'source_id': 'Mara Nitschke', 'target_id': 'Eastern Oak Insurance Zrt.'}
 ] AS row
 MATCH (s:Object {id: row.source_id})
 MATCH (t:Object {id: row.target_id})
-MERGE (s)-[:PRIMARY_SALES_REP]->(t);
+MERGE (s)-[:PRIMARY_SALES_REP_OF]->(t);
 
 UNWIND [
-  {'source_id': 'Danube Pharmaceuticals BV', 'target_id': 'Mara Nitschke'},
-  {'source_id': 'Carpathian Financial Services plc', 'target_id': 'Istvan Koren'},
-  {'source_id': 'AlpenTech Innovations AG', 'target_id': 'Istvan Koren'},
-  {'source_id': 'Balkan Minerals d.o.o.', 'target_id': 'Mara Nitschke'},
-  {'source_id': 'Riviera Robotics SAS', 'target_id': 'Christine von Dobbert'},
-  {'source_id': 'Iberian Sun Solaridades SA', 'target_id': 'Mara Nitschke'},
-  {'source_id': 'Baltic Wave Energies Ltd.', 'target_id': 'Christine von Dobbert'},
-  {'source_id': 'Pantheon Art Gallery Kft.', 'target_id': 'Christine von Dobbert'},
-  {'source_id': 'Vesta Fashion House GmbH', 'target_id': 'Istvan Koren'},
-  {'source_id': 'Mediterranea Luxury Cruises S.p.A.', 'target_id': 'Christine von Dobbert'},
-  {'source_id': 'Nordica Systems GmbH', 'target_id': 'Istvan Koren'},
-  {'source_id': 'Celtica Green Farms Oy', 'target_id': 'Mara Nitschke'},
-  {'source_id': 'Golden Fleece Textiles S.A.R.L.', 'target_id': 'Jan Niklas Adams'},
-  {'source_id': 'SwissPeak Timepieces AG', 'target_id': 'Jan Niklas Adams'},
-  {'source_id': 'Eastern Oak Insurance Zrt.', 'target_id': 'Istvan Koren'}
+  {'source_id': 'Mara Nitschke', 'target_id': 'Danube Pharmaceuticals BV'},
+  {'source_id': 'Istvan Koren', 'target_id': 'Carpathian Financial Services plc'},
+  {'source_id': 'Istvan Koren', 'target_id': 'AlpenTech Innovations AG'},
+  {'source_id': 'Mara Nitschke', 'target_id': 'Balkan Minerals d.o.o.'},
+  {'source_id': 'Christine von Dobbert', 'target_id': 'Riviera Robotics SAS'},
+  {'source_id': 'Mara Nitschke', 'target_id': 'Iberian Sun Solaridades SA'},
+  {'source_id': 'Christine von Dobbert', 'target_id': 'Baltic Wave Energies Ltd.'},
+  {'source_id': 'Christine von Dobbert', 'target_id': 'Pantheon Art Gallery Kft.'},
+  {'source_id': 'Istvan Koren', 'target_id': 'Vesta Fashion House GmbH'},
+  {'source_id': 'Christine von Dobbert', 'target_id': 'Mediterranea Luxury Cruises S.p.A.'},
+  {'source_id': 'Istvan Koren', 'target_id': 'Nordica Systems GmbH'},
+  {'source_id': 'Mara Nitschke', 'target_id': 'Celtica Green Farms Oy'},
+  {'source_id': 'Jan Niklas Adams', 'target_id': 'Golden Fleece Textiles S.A.R.L.'},
+  {'source_id': 'Jan Niklas Adams', 'target_id': 'SwissPeak Timepieces AG'},
+  {'source_id': 'Istvan Koren', 'target_id': 'Eastern Oak Insurance Zrt.'}
 ] AS row
 MATCH (s:Object {id: row.source_id})
 MATCH (t:Object {id: row.target_id})
-MERGE (s)-[:SECONDARY_SALES_REP]->(t);
+MERGE (s)-[:SECONDARY_SALES_REP_OF]->(t);
 
 UNWIND [
   {'source_id': 'Danube Pharmaceuticals BV', 'target_id': 'o-990035'},
