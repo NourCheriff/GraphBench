@@ -1,7 +1,9 @@
 from __future__ import annotations
+
 from collections import defaultdict
 from pathlib import Path
 from urllib.parse import quote
+
 from rdflib import OWL, RDF, Graph, Namespace
 
 from graphbench.helpers import (
@@ -10,13 +12,14 @@ from graphbench.helpers import (
     time_literal,
     value_literal,
 )
+
 from ..datareader.models import Attribute, OCELLog
 from ..datareader.reader import DataReader
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 DATASET_PATH = REPO_ROOT / "data" / "order-management.json"
 SCHEMA_PATH = REPO_ROOT / "docs" / "schemas" / "rdf" / "variants" / "v2.ttl"
-OUTPUT_PATH = REPO_ROOT / "output" / "rdf" / "order-management.ttl" 
+OUTPUT_PATH = REPO_ROOT / "output" / "rdf" / "order-management.ttl"
 MATERIALIZE_INVERSES = True
 
 OCEL = Namespace("https://graphbench.org/ocel#")
@@ -93,9 +96,16 @@ DYNAMIC_ATTRIBUTE = {
     ("products", "price"): OM.hasPrice,
 }
 
+
 def build_graph(log: OCELLog, materialize_inverses: bool = False) -> Graph:
     g = Graph()
-    for prefix, ns in (("ocel", OCEL), ("om", OM), ("ev", EVENT), ("obj", OBJ), ("av", ATTRIBUTE_VALUE)):
+    for prefix, ns in (
+        ("ocel", OCEL),
+        ("om", OM),
+        ("ev", EVENT),
+        ("obj", OBJ),
+        ("av", ATTRIBUTE_VALUE),
+    ):
         g.bind(prefix, ns)
 
     _add_objects(g, log)
@@ -103,6 +113,7 @@ def build_graph(log: OCELLog, materialize_inverses: bool = False) -> Graph:
     _add_e2o(g, log)
     _add_o2o(g, log, materialize_inverses)
     return g
+
 
 def _add_objects(g: Graph, log: OCELLog) -> None:
     for obj in log.objects.values():
@@ -137,16 +148,19 @@ def _add_objects(g: Graph, log: OCELLog) -> None:
             else:
                 raise ValueError(f"attribute {key!r} not mapped in the converter")
 
+
 def _add_events(g: Graph, log: OCELLog) -> None:
     for event in log.events.values():
         subject = iri(EVENT, event.id)
         g.add((subject, RDF.type, lookup(EVENT_CLASS, event.type)))
         g.add((subject, OCEL.time, time_literal(event.time)))
 
+
 def _add_e2o(g: Graph, log: OCELLog) -> None:
     for rel in log.e2o:
         prop = lookup(E2O_PROPERTY, rel.qualifier)
         g.add((iri(EVENT, rel.source_id), prop, iri(OBJ, rel.target_id)))
+
 
 def _add_o2o(g: Graph, log: OCELLog, materialize_inverses: bool) -> None:
     for rel in log.o2o:
@@ -159,28 +173,41 @@ def _add_o2o(g: Graph, log: OCELLog, materialize_inverses: bool) -> None:
         if materialize_inverses and prop in INVERSE_PROPERTY:
             g.add((target, INVERSE_PROPERTY[prop], source))
 
+
 def validate_graph(data: Graph, schema: Graph) -> None:
     declared = (
         set(schema.subjects(RDF.type, OWL.Class))
         | set(schema.subjects(RDF.type, OWL.ObjectProperty))
         | set(schema.subjects(RDF.type, OWL.DatatypeProperty))
     )
-    problems = [f"property not declared: {p}"
-                for p in set(data.predicates()) - {RDF.type} if p not in declared]
-    problems += [f"class not declared: {c}"
-                 for c in set(data.objects(None, RDF.type)) if c not in declared]
+    problems = [
+        f"property not declared: {p}"
+        for p in set(data.predicates()) - {RDF.type}
+        if p not in declared
+    ]
+    problems += [
+        f"class not declared: {c}"
+        for c in set(data.objects(None, RDF.type))
+        if c not in declared
+    ]
     if problems:
-        raise ValueError("the graph is not consistent with the ontology:\n  " + "\n  ".join(sorted(problems)))
+        raise ValueError(
+            "the graph is not consistent with the ontology:\n  "
+            + "\n  ".join(sorted(problems))
+        )
+
 
 def save_graph(graph: Graph, path: Path, fmt: str = "turtle") -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     graph.serialize(destination=path, format=fmt, encoding="utf-8")
+
 
 def main() -> None:
     ocel_log = DataReader().read(DATASET_PATH)
     graph = build_graph(ocel_log, MATERIALIZE_INVERSES)
     validate_graph(graph, Graph().parse(SCHEMA_PATH))
     save_graph(graph, OUTPUT_PATH, "turtle")
+
 
 if __name__ == "__main__":
     main()
