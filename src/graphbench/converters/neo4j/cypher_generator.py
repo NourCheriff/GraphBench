@@ -1,3 +1,4 @@
+import re
 import unicodedata
 from collections import defaultdict
 from collections.abc import Iterator
@@ -34,6 +35,8 @@ _REVERSED_O2O = {
 }
 
 _VERSIONED_ATTRS: set[tuple[str, str]] = {("products", "price")}
+
+_PROP_NAME_REGEX = re.compile(r"[A-Za-z_][A-Za-z0-9_]*\Z")
 
 
 class CypherGenerator:
@@ -178,6 +181,16 @@ class CypherGenerator:
                 else:
                     out.append(ch)
             return '"' + "".join(out) + '"'
+
+        if isinstance(value, dict):
+            items = []
+            for key, val in value.items():
+                if not isinstance(key, str) or not _PROP_NAME_REGEX.match(key):
+                    raise ValueError(f"unsafe property name {key!r}")
+
+                items.append(f"{key}: {self._cypher_literal(val)}")
+
+            return "{" + ", ".join(items) + "}"
 
         return repr(value)
 
