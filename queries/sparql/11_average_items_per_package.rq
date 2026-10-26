@@ -1,0 +1,15 @@
+# Q11 - Average items per package
+# What is the average number of items contained in a package
+
+PREFIX om: <https://graphbench.org/order-management#>
+
+SELECT (AVG(?totalItems) AS ?averageItemsPerPackage)
+WHERE {
+  {
+    SELECT ?package (COUNT(?item) AS ?totalItems)
+    WHERE {
+      ?package om:contains ?item .
+    }
+    GROUP BY ?package
+  }
+}

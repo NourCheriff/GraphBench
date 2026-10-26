@@ -1,0 +1,24 @@
+# Q5 - Average order lead time
+# What is the average lead time of the fully delivered orders
+
+PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
+PREFIX om:   <https://graphbench.org/order-management#>
+PREFIX ocel: <https://graphbench.org/ocel#>
+
+SELECT (AVG(ofn:asHours(?end - ?start)) AS ?avgTimeToDeliverInHours)
+WHERE{	
+    {
+        SELECT ?order (MAX(?deliveredAt) AS ?end)
+        WHERE {
+            ?order    om:comprises      ?item .
+            ?package  om:contains       ?item .
+            ?delivery_event	a                 om:PackageDelivered ;
+            				om:shippedPackage ?package ;
+            				ocel:time         ?deliveredAt .
+        }
+        GROUP BY ?order
+	}
+    ?placement_event 	a	om:PlaceOrder ;
+    					om:order  ?order ;
+    					ocel:time ?start .
+}

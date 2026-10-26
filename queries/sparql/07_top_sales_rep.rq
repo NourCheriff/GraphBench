@@ -1,0 +1,14 @@
+# Q7 - Top sales rep
+# Which is the sales person who confirmed the most orders
+
+PREFIX ocel: <https://graphbench.org/ocel#>
+PREFIX om: <https://graphbench.org/order-management#>
+
+SELECT ?employee (COUNT(DISTINCT ?event) AS ?confirmedOrders)
+WHERE {
+  ?event 	a				om:ConfirmOrder ;
+       		om:salesPerson 	?employee .
+}
+GROUP BY ?employee
+ORDER BY DESC(?confirmedOrders) ?employee
+LIMIT 1

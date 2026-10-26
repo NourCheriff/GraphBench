@@ -1,0 +1,11 @@
+# Q2 - Event objects
+# Which are the objects involved given a specific event
+
+PREFIX ev: <https://graphbench.org/order-management/data/event/>
+PREFIX ocel: <https://graphbench.org/ocel#>
+
+SELECT ?object
+WHERE {
+  VALUES ?event { ev:place_o-990001 }
+  ?event ocel:hasObject ?object .
+}

@@ -1,0 +1,16 @@
+# Q2 - Order event sequence
+# Which are the events involved given a specific order
+
+PREFIX ocel: <https://graphbench.org/ocel#>
+PREFIX om: <https://graphbench.org/order-management#>
+PREFIX obj: <https://graphbench.org/order-management/data/object/>
+
+SELECT ?time ?event ?type
+WHERE {
+  VALUES ?order { obj:o-990004 }
+  ?event om:order ?order ;
+         a ?type ;
+         ocel:time ?time .
+  FILTER(STRSTARTS(STR(?type), STR(om:)))
+}
+ORDER BY ?time

@@ -1,0 +1,18 @@
+# Q10 - Failed delivery ratio
+# What is the number of failed deliveries compared to the total orders
+
+PREFIX om: <https://graphbench.org/order-management#>
+
+SELECT ?failedDeliveries ?totalOrders (?failedDeliveries / ?totalOrders AS ?ratio)
+WHERE {
+    { SELECT (COUNT(?failure) AS ?failedDeliveries) 
+        WHERE { 
+            ?failure a om:FailedDelivery . 
+        } 
+    }
+    { SELECT (COUNT(?order)   AS ?totalOrders)
+        WHERE {
+            ?order   a om:Order . 
+        }
+    }
+}
