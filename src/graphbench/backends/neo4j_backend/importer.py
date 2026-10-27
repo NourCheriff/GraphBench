@@ -1,18 +1,37 @@
 from pathlib import Path
 
-from ...datareader.reader import DataReader
+from tqdm import tqdm
+
 from .connector import Neo4jClient
 
-DATABASE = ""
-DATASET_PATH = (
-    Path(__file__).resolve().parent / "../../../../data/order-management.json"
-).resolve()
+DATABASE = "order-management"
+
+REPO_ROOT = Path(__file__).resolve().parents[4]
+CYPHER_FILE_PATH = REPO_ROOT / "output" / "neo4j" / "order-management.cypher"
+
+STATEMENT_SEP = ";\n"
+
+
+def read_statements(path: Path) -> list[str]:
+    statements = path.read_text(encoding="utf-8").split(STATEMENT_SEP)
+    return [statement for statement in statements if statement.strip()]
+
+
+def wipe_database(client: Neo4jClient) -> None:
+    with client.driver.session(database=DATABASE) as session:
+        session.run(
+            "MATCH (n) CALL (n) { DETACH DELETE n } IN TRANSACTIONS OF 10000 ROWS"
+        ).consume()
 
 
 def main():
-    data = DataReader().read(DATASET_PATH)
+    statements = read_statements(CYPHER_FILE_PATH)
+
     with Neo4jClient() as client:
-        print("Neo4j - Connection established")
+        wipe_database(client)
+
+        for statement in tqdm(statements, desc="Importing", unit="stmt"):
+            client.driver.execute_query(statement.strip(), database_=DATABASE)
 
 
 if __name__ == "__main__":
