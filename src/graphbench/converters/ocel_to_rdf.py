@@ -6,7 +6,7 @@ from urllib.parse import quote
 
 from rdflib import OWL, RDF, Graph, Namespace
 
-from graphbench.helpers import (
+from graphbench.rdf_utils import (
     iri,
     lookup,
     time_literal,

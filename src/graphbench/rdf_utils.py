@@ -1,13 +1,16 @@
 from __future__ import annotations
-
 from datetime import datetime, timezone
-from urllib.parse import quote
-
+from urllib.parse import quote, unquote
 from rdflib import XSD, Literal, Namespace, URIRef
 
+import re
 
 def iri(namespace: Namespace, identifier: str) -> URIRef:
     return namespace[quote(identifier, safe="")]
+
+
+def decode(iri: str) -> str:
+    return unquote(re.split(r"[/#]", iri)[-1])
 
 
 def time_literal(value: datetime) -> Literal:

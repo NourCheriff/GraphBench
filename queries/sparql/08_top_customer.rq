@@ -1,0 +1,14 @@
+# Q8 - Top customer
+# Which is the customer who placed the most orders, and how much they spent in total
+
+PREFIX om:  <https://graphbench.org/order-management#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?customer (COUNT(?order) AS ?orders) (SUM(xsd:decimal(STR(?price))) AS ?totalSpent)
+WHERE {
+  ?customer om:places ?order .
+  ?order    om:price  ?price .
+}
+GROUP BY ?customer
+ORDER BY DESC(?orders) DESC(?totalSpent)
+LIMIT 1

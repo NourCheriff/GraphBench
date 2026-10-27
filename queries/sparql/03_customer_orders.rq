@@ -1,0 +1,22 @@
+# Q3 - Customer orders
+# Which are the orders placed given a specific customer
+
+PREFIX ocel: <https://graphbench.org/ocel#>
+PREFIX om: <https://graphbench.org/order-management#>
+PREFIX obj: <https://graphbench.org/order-management/data/object/>
+
+SELECT ?order ?date ?price (COUNT(?items) AS ?totalItems)
+WHERE {
+  VALUES ?customer { obj:Riviera%20Robotics%20SAS }
+  
+  ?customer om:places ?order .
+
+  ?order    om:price ?price 	;
+            om:comprises ?items	.
+    
+  ?placement	a 			om:PlaceOrder	;
+    			om:order	?order			;
+    			ocel:time	?date			.
+}
+GROUP BY ?order ?date ?price
+ORDER BY ?date

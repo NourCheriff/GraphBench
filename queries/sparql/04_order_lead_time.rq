@@ -1,0 +1,25 @@
+# Q4 - Order lead time
+# How long each order takes, from placement to the delivery of its last package
+
+PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
+PREFIX om:   <https://graphbench.org/order-management#>
+PREFIX ocel: <https://graphbench.org/ocel#>
+
+SELECT ?order ?start ?end (ofn:asHours(?end - ?start) AS ?timeToDeliverInHours)
+WHERE {
+  {
+    SELECT ?order (MAX(?deliveredAt) AS ?end)
+    WHERE {
+      ?order    om:comprises      ?item .
+      ?package  om:contains       ?item .
+      ?delivery_event	a                 om:PackageDelivered ;
+                		om:shippedPackage ?package ;
+		                ocel:time         ?deliveredAt .
+    }
+    GROUP BY ?order
+  }
+  ?placement_event	a         om:PlaceOrder ;
+             		om:order  ?order ;
+            		ocel:time ?start .
+}
+ORDER BY DESC(?timeToDeliverInHours)

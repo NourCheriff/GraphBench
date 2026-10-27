@@ -1,0 +1,14 @@
+# Q13 - Top shippers
+# Which are the 3 shippers who delivered the most packages
+
+PREFIX ocel: <https://graphbench.org/ocel#>
+PREFIX om: <https://graphbench.org/order-management#>
+
+SELECT ?employee (COUNT(DISTINCT ?event) AS ?deliveredPackages)
+WHERE {
+  ?event	a			om:PackageDelivered ;
+       		om:shipper 	?employee .
+}
+GROUP BY ?employee
+ORDER BY DESC(?deliveredPackages) ?employee
+LIMIT 3

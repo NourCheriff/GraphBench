@@ -1,0 +1,18 @@
+# Q12 - Split orders ratio
+# What is the ratio of orders whose items are spread over different packages to the total orders
+
+PREFIX om: <https://graphbench.org/order-management#>
+
+SELECT (SUM(IF(?packages > 1, 1, 0))                AS ?splitOrders)
+       (COUNT(?order)                               AS ?totalOrders)
+       (SUM(IF(?packages > 1, 1, 0)) / COUNT(?order) AS ?splitRatio)
+WHERE {
+  {
+    SELECT ?order (COUNT(DISTINCT ?package) AS ?packages)
+    WHERE {
+      ?order   om:comprises ?item .
+      ?package om:contains  ?item .
+    }
+    GROUP BY ?order
+  }
+}

@@ -1,0 +1,15 @@
+# Q6 - Product price history
+# How the price changes over time given a specific product
+
+PREFIX ocel: <https://graphbench.org/ocel#>
+PREFIX om: <https://graphbench.org/order-management#>
+PREFIX obj: <https://graphbench.org/order-management/data/object/>
+
+SELECT ?time ?product ?value
+WHERE{
+    VALUES ?product { obj:iPad%20Air }
+    ?product om:hasPrice ?price .
+    ?price	ocel:time ?time ;
+    		ocel:value ?value .
+}
+ORDER BY ?time 

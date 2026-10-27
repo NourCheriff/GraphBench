@@ -1,0 +1,12 @@
+# Q9 - Top selling products
+# Which are the 10 products with the most items sold
+
+PREFIX om: <https://graphbench.org/order-management#>
+
+SELECT ?product (COUNT(?item) AS ?itemsSold)
+WHERE {
+  ?item om:isA ?product .
+}
+GROUP BY ?product
+ORDER BY DESC(?itemsSold) ?product
+LIMIT 10
