@@ -11,7 +11,7 @@ services:
       GDB_HEAP_SIZE: "2g"
 
   neo4j:
-    image: neo4j:5.26.31
+    image: neo4j:2026.10.1
     container_name: neo4j
     restart: always
     ports:
