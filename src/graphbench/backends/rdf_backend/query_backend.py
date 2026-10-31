@@ -10,7 +10,7 @@ _QUERIES_DIR = Path(__file__).resolve().parents[4] / "queries" / "sparql"
 
 class RDFBackend(QueryBackend):
     name = "graphdb"
-    extension = "sparql"
+    extension = "rq"
 
     def __init__(self, client: GraphDBClient, queries_dir: Path = _QUERIES_DIR):
         super().__init__(queries_dir)
