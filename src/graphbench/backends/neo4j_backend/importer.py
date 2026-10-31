@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 from pathlib import Path
 
 from tqdm import tqdm
@@ -24,14 +25,17 @@ def wipe_database(client: Neo4jClient) -> None:
         ).consume()
 
 
+def load(client: Neo4jClient, statements: Iterable[str]) -> None:
+    for statement in statements:
+        client.driver.execute_query(statement.strip(), database_=DATABASE)
+
+
 def main():
     statements = read_statements(CYPHER_FILE_PATH)
 
     with Neo4jClient() as client:
         wipe_database(client)
-
-        for statement in tqdm(statements, desc="Importing", unit="stmt"):
-            client.driver.execute_query(statement.strip(), database_=DATABASE)
+        load(client, tqdm(statements, desc="Importing", unit="stmt"))
 
 
 if __name__ == "__main__":

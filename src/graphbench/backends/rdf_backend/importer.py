@@ -1,10 +1,11 @@
 from __future__ import annotations
-from pathlib import Path
-from .connector import GraphDBClient
 
 import time
 import urllib.error
 import urllib.request
+from pathlib import Path
+
+from .connector import GraphDBClient
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 SCHEMA_PATH = REPO_ROOT / "docs" / "schemas" / "rdf" / "variants" / "v2.ttl"
@@ -12,24 +13,20 @@ DATA_PATH = REPO_ROOT / "output" / "rdf" / "order-management.ttl"
 
 REPOSITORY_URL = "http://localhost:7200/repositories/OrderManagement"
 
-def _request(method: str, url: str, body: bytes | None = None) -> bytes:
-    headers = {
-        "Content-Type": "text/turtle"
-    } 
 
-    request = urllib.request.Request(
-        url, 
-        data=body, 
-        method=method, 
-        headers=headers
-    )
+def _request(method: str, url: str, body: bytes | None = None) -> bytes:
+    headers = {"Content-Type": "text/turtle"}
+
+    request = urllib.request.Request(url, data=body, method=method, headers=headers)
 
     try:
         with urllib.request.urlopen(request) as response:
             return response.read()
     except urllib.error.HTTPError as error:
         detail = error.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"GraphDB returned {error.code} for {method} {url}:\n{detail}") from None
+        raise RuntimeError(
+            f"GraphDB returned {error.code} for {method} {url}:\n{detail}"
+        ) from None
 
 
 def clear_repository() -> None:
@@ -45,6 +42,13 @@ def upload_file(path: Path) -> float:
 def get_size(graphdb: GraphDBClient) -> int:
     result = graphdb.query("SELECT (COUNT(*) AS ?n) WHERE { ?s ?p ?o }")
     return int(result["results"]["bindings"][0]["n"]["value"])
+
+
+def load_repository(
+    schema_path: Path = SCHEMA_PATH, data_path: Path = DATA_PATH
+) -> None:
+    upload_file(schema_path)
+    upload_file(data_path)
 
 
 def main() -> None:
