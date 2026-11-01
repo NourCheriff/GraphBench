@@ -1,41 +1,61 @@
 from __future__ import annotations
 
 import time
-import urllib.error
-import urllib.request
 from pathlib import Path
+
+import requests
 
 from .connector import GraphDBClient
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 SCHEMA_PATH = REPO_ROOT / "docs" / "schemas" / "rdf" / "variants" / "v2.ttl"
 DATA_PATH = REPO_ROOT / "output" / "rdf" / "order-management.ttl"
+CONFIG_PATH = REPO_ROOT / "config" / "rdf" / "order-management-config.ttl"
 
-REPOSITORY_URL = "http://localhost:7200/repositories/OrderManagement"
+SERVER_URL = "http://localhost:7200"
+REPOSITORY_ID = "OrderManagement"
+REPOSITORY_URL = f"{SERVER_URL}/repositories/{REPOSITORY_ID}"
 
 
-def _request(method: str, url: str, body: bytes | None = None) -> bytes:
-    headers = {"Content-Type": "text/turtle"}
-
-    request = urllib.request.Request(url, data=body, method=method, headers=headers)
-
-    try:
-        with urllib.request.urlopen(request) as response:
-            return response.read()
-    except urllib.error.HTTPError as error:
-        detail = error.read().decode("utf-8", errors="replace")
+def _check(response: requests.Response) -> requests.Response:
+    if not response.ok:
         raise RuntimeError(
-            f"GraphDB returned {error.code} for {method} {url}:\n{detail}"
-        ) from None
+            f"GraphDB returned {response.status_code} for "
+            f"{response.request.method} {response.url}:\n{response.text}"
+        )
+    return response
+
+
+def repository_exists(repository_id: str = REPOSITORY_ID) -> bool:
+    repositories = _check(requests.get(f"{SERVER_URL}/rest/repositories")).json()
+    return any(repo["id"] == repository_id for repo in repositories)
+
+
+def create_repository(config_path: Path = CONFIG_PATH) -> None:
+    with config_path.open("rb") as config:
+        _check(
+            requests.post(f"{SERVER_URL}/rest/repositories", files={"config": config})
+        )
+
+
+def ensure_repository(config_path: Path = CONFIG_PATH) -> None:
+    if not repository_exists():
+        create_repository(config_path)
 
 
 def clear_repository() -> None:
-    _request("DELETE", f"{REPOSITORY_URL}/statements")
+    _check(requests.delete(f"{REPOSITORY_URL}/statements"))
 
 
 def upload_file(path: Path) -> float:
     start = time.perf_counter()
-    _request("POST", f"{REPOSITORY_URL}/statements", path.read_bytes())
+    _check(
+        requests.post(
+            f"{REPOSITORY_URL}/statements",
+            data=path.read_bytes(),
+            headers={"Content-Type": "text/turtle"},
+        )
+    )
     return time.perf_counter() - start
 
 
@@ -52,6 +72,8 @@ def load_repository(
 
 
 def main() -> None:
+    ensure_repository()
+
     with GraphDBClient(REPOSITORY_URL) as graphdb:
         clear_repository()
 

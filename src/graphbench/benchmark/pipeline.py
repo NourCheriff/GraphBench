@@ -48,6 +48,8 @@ def run_conversion(runs: int = 5, dataset: Path = DATASET_PATH) -> list[StageTim
 
 
 def run_loading(runs: int = 1) -> list[StageTiming]:
+    graphdb_importer.ensure_repository()
+
     with Neo4jClient() as client:
         return [
             _measure(
