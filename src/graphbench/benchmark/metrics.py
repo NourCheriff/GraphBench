@@ -65,3 +65,10 @@ def repeat(
         action()
         times.append((time.perf_counter() - start) * 1000)
     return times
+
+
+@dataclass(kw_only=True)
+class StorageMeasurement:
+    backend: str
+    component: str
+    bytes: int
