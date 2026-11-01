@@ -7,7 +7,7 @@ PREFIX obj: <https://graphbench.org/order-management/data/object/>
 
 SELECT ?time ?event ?type
 WHERE {
-  VALUES ?order { obj:o-990004 }
+  VALUES ?order { obj:o-990679 }
   ?event om:order ?order ;
          a ?type ;
          ocel:time ?time .

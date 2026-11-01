@@ -1,11 +1,14 @@
 import logging
 
+from .benchmark.latency import run_latency
 from .benchmark.pipeline import run_conversion, run_loading
 from .benchmark.reporting import create_run_dir, save_storage_measurements, save_timings
 from .benchmark.storage import measure_storage
 
 CONVERSION_RUNS = 5
 LOADING_RUNS = 1
+QUERY_WARMUP_RUNS = 3
+QUERY_RUNS = 10
 
 logger = logging.getLogger(__name__)
 
@@ -27,6 +30,9 @@ def main() -> None:
 
     # measured once, right after loading
     save_storage_measurements(measure_storage(), run_dir, "storage")
+
+    latency = run_latency(warmup=QUERY_WARMUP_RUNS, runs=QUERY_RUNS)
+    save_timings(latency, run_dir, "query_latency")
 
     logger.info("Results saved to %s", run_dir)
 

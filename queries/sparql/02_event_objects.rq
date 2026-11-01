@@ -6,6 +6,6 @@ PREFIX ocel: <https://graphbench.org/ocel#>
 
 SELECT ?object
 WHERE {
-  VALUES ?event { ev:place_o-990001 }
+  VALUES ?event { ev:create_p-660979 }
   ?event ocel:hasObject ?object .
 }
