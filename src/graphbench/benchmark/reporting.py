@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import csv
+from dataclasses import asdict
 from datetime import datetime
 from pathlib import Path
 
-from .metrics import Timing
+from .metrics import StorageMeasurement, Timing
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 RESULTS_DIR = REPO_ROOT / "output" / "benchmark"
@@ -46,3 +47,18 @@ def save_timings(results: list[Timing], run_dir: Path, name: str) -> tuple[Path,
                 writer.writerow({**r.labels(), "run": run, "time_ms": round(t, 3)})
 
     return summary_path, runs_path
+
+
+def save_storage_measurements(
+    rows: list[StorageMeasurement], run_dir: Path, name: str
+) -> Path:
+    if not rows:
+        raise ValueError(f"no rows to save for {name!r}")
+
+    path = run_dir / f"{name}.csv"
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=list(asdict(rows[0]).keys()))
+        writer.writeheader()
+        writer.writerows(asdict(r) for r in rows)
+
+    return path
