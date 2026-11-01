@@ -24,6 +24,16 @@ def wipe_database(client: Neo4jClient) -> None:
             "MATCH (n) CALL (n) { DETACH DELETE n } IN TRANSACTIONS OF 10000 ROWS"
         ).consume()
 
+        constraints = session.run("SHOW CONSTRAINTS YIELD name").value("name")
+        for name in constraints:
+            session.run(f"DROP CONSTRAINT `{name}` IF EXISTS").consume()
+
+        indexes = session.run(
+            "SHOW INDEXES YIELD name, type WHERE type <> 'LOOKUP' RETURN name"
+        ).value("name")
+        for name in indexes:
+            session.run(f"DROP INDEX `{name}` IF EXISTS").consume()
+
 
 def load(client: Neo4jClient, statements: Iterable[str]) -> None:
     for statement in statements:
