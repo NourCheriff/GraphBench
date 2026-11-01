@@ -1,7 +1,6 @@
-import re
-import unicodedata
 from collections import defaultdict
 from collections.abc import Iterator
+from dataclasses import dataclass
 from typing import Any
 
 from ...datareader.models import OCELLog
@@ -36,7 +35,11 @@ _REVERSED_O2O = {
 
 _VERSIONED_ATTRS: set[tuple[str, str]] = {("products", "price")}
 
-_PROP_NAME_REGEX = re.compile(r"[A-Za-z_][A-Za-z0-9_]*\Z")
+
+@dataclass(frozen=True)
+class Operation:
+    query: str
+    rows: list[dict] | None = None
 
 
 class CypherGenerator:
@@ -54,10 +57,16 @@ class CypherGenerator:
         self._versioned_attrs = versioned_attrs
         self._reversed_o2o = reversed_o2o
 
-    def generate_cypher(self, log: OCELLog) -> Iterator[str]:
-        yield "CREATE CONSTRAINT object_id IF NOT EXISTS FOR (o:Object) REQUIRE o.id IS UNIQUE;"
-        yield "CREATE CONSTRAINT event_id IF NOT EXISTS FOR (e:Event) REQUIRE e.id IS UNIQUE;"
-        yield "CREATE CONSTRAINT productprice_key IF NOT EXISTS FOR (v:ProductPrice) REQUIRE v.key IS UNIQUE;"
+    def generate_cypher(self, log: OCELLog) -> Iterator[Operation]:
+        yield Operation(
+            "CREATE CONSTRAINT object_id IF NOT EXISTS FOR (o:Object) REQUIRE o.id IS UNIQUE"
+        )
+        yield Operation(
+            "CREATE CONSTRAINT event_id IF NOT EXISTS FOR (e:Event) REQUIRE e.id IS UNIQUE"
+        )
+        yield Operation(
+            "CREATE CONSTRAINT productprice_key IF NOT EXISTS FOR (v:ProductPrice) REQUIRE v.key IS UNIQUE"
+        )
 
         nodes: dict[str, list[dict]] = defaultdict(list)
         prices: list[dict] = []
@@ -163,40 +172,18 @@ class CypherGenerator:
                 f"MERGE (s)-[:{rel_type}]->(t)",
             )
 
-        yield "CREATE INDEX event_type IF NOT EXISTS FOR (e:Event) ON (e.type);"
-        yield "CREATE INDEX event_timestamp IF NOT EXISTS FOR (e:Event) ON (e.timestamp);"
-        yield "CREATE INDEX productprice_timestamp IF NOT EXISTS FOR (v:ProductPrice) ON (v.timestamp);"
-        yield "CALL db.awaitIndexes();"
+        yield Operation(
+            "CREATE INDEX event_type IF NOT EXISTS FOR (e:Event) ON (e.type)"
+        )
+        yield Operation(
+            "CREATE INDEX event_timestamp IF NOT EXISTS FOR (e:Event) ON (e.timestamp)"
+        )
+        yield Operation(
+            "CREATE INDEX productprice_timestamp IF NOT EXISTS FOR (v:ProductPrice) ON (v.timestamp)"
+        )
+        yield Operation("CALL db.awaitIndexes()")
 
-    def _cypher_literal(self, value: Any) -> str:
-        if isinstance(value, str):
-            out = []
-            for ch in value:
-                if ch in '\\"':
-                    out.append("\\" + ch)
-                elif ch == "\n":
-                    out.append("\\n")
-                elif unicodedata.category(ch) in ("Cc", "Zl", "Zp"):
-                    out.append(f"\\u{ord(ch):04x}")
-                else:
-                    out.append(ch)
-            return '"' + "".join(out) + '"'
-
-        if isinstance(value, dict):
-            items = []
-            for key, val in value.items():
-                if not isinstance(key, str) or not _PROP_NAME_REGEX.match(key):
-                    raise ValueError(f"unsafe property name {key!r}")
-
-                items.append(f"{key}: {self._cypher_literal(val)}")
-
-            return "{" + ", ".join(items) + "}"
-
-        return repr(value)
-
-    def _unwind(self, rows: list[dict], body: str) -> Iterator[str]:
+    def _unwind(self, rows: list[dict], body: str) -> Iterator[Operation]:
+        query = f"UNWIND $rows AS row\n{body}"
         for i in range(0, len(rows), self._batch_size):
-            lines = ",\n".join(
-                f"  {self._cypher_literal(r)}" for r in rows[i : i + self._batch_size]
-            )
-            yield f"UNWIND [\n{lines}\n] AS row\n{body};"
+            yield Operation(query, rows[i : i + self._batch_size])
