@@ -30,12 +30,19 @@ def load(client: Neo4jClient, statements: Iterable[str]) -> None:
         client.driver.execute_query(statement.strip(), database_=DATABASE)
 
 
-def main():
-    statements = read_statements(CYPHER_FILE_PATH)
+def load_database(
+    client: Neo4jClient, path: Path = CYPHER_FILE_PATH, progress: bool = False
+) -> None:
+    statements: Iterable[str] = read_statements(path)
+    if progress:
+        statements = tqdm(statements, desc="Importing", unit="stmt")
+    load(client, statements)
 
+
+def main():
     with Neo4jClient() as client:
         wipe_database(client)
-        load(client, tqdm(statements, desc="Importing", unit="stmt"))
+        load_database(client, CYPHER_FILE_PATH, progress=True)
 
 
 if __name__ == "__main__":

@@ -202,11 +202,18 @@ def save_graph(graph: Graph, path: Path, fmt: str = "turtle") -> None:
     graph.serialize(destination=path, format=fmt, encoding="utf-8")
 
 
+def convert(
+    log: OCELLog, path: Path = OUTPUT_PATH, schema: Graph | None = None
+) -> None:
+    graph = build_graph(log, MATERIALIZE_INVERSES)
+    if schema is not None:
+        validate_graph(graph, schema)
+    save_graph(graph, path, "turtle")
+
+
 def main() -> None:
     ocel_log = DataReader().read(DATASET_PATH)
-    graph = build_graph(ocel_log, MATERIALIZE_INVERSES)
-    validate_graph(graph, Graph().parse(SCHEMA_PATH))
-    save_graph(graph, OUTPUT_PATH, "turtle")
+    convert(ocel_log, OUTPUT_PATH, schema=Graph().parse(SCHEMA_PATH))
 
 
 if __name__ == "__main__":
