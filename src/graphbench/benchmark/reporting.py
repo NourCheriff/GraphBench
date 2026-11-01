@@ -8,7 +8,7 @@ from .metrics import Timing
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 RESULTS_DIR = REPO_ROOT / "output" / "benchmark"
-STAT_COLUMNS = ["min_ms", "median_ms", "mean_ms", "max_ms", "stdev_ms"]
+STAT_COLUMNS = ["min_ms", "max_ms", "median_ms", "mean_ms", "stdev_ms"]
 
 
 def create_run_dir(base: Path = RESULTS_DIR) -> Path:

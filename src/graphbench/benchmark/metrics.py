@@ -25,9 +25,9 @@ class Timing:
             return {}
         return {
             "min_ms": min(t),
+            "max_ms": max(t),
             "median_ms": statistics.median(t),
             "mean_ms": statistics.mean(t),
-            "max_ms": max(t),
             "stdev_ms": statistics.stdev(t) if len(t) > 1 else 0.0,
         }
 

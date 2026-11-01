@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import gc
+import logging
 from collections.abc import Callable
 from pathlib import Path
 
@@ -13,6 +14,8 @@ from ..converters.ocel_to_rdf import DATASET_PATH
 from ..datareader.reader import DataReader
 from .metrics import Stage, StageTiming, Target, repeat
 
+logger = logging.getLogger(__name__)
+
 
 def _measure(
     stage: Stage,
@@ -23,16 +26,24 @@ def _measure(
 ) -> StageTiming:
     """Time `action` `runs` times; `reset` and `gc.collect` run untimed before each run."""
 
+    run = 0
+
     def setup() -> None:
+        nonlocal run
+        run += 1
         if reset is not None:
             reset()
         gc.collect()
+        logger.info("%s %s: run %d/%d", stage, target, run, runs)
 
     timing = StageTiming(stage=stage, target=target)
     try:
         timing.times_ms = repeat(action, runs, setup=setup)
     except Exception as exc:
         timing.error = f"{type(exc).__name__}: {exc}"
+        logger.error("%s %s failed: %s", stage, target, timing.error)
+    else:
+        logger.info("%s %s: median %.0f ms", stage, target, timing.stats()["median_ms"])
     return timing
 
 
