@@ -1,0 +1,6 @@
+backend,component,bytes
+graphdb,heap,255992832
+neo4j,heap,71721984
+graphdb,store,100887207
+neo4j,store,20152320
+neo4j,transaction_logs,315632974
