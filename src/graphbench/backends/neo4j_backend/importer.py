@@ -5,12 +5,8 @@ from typing import Any
 
 from tqdm import tqdm
 
+from ...settings import LPG_JSONL_PATH, NEO4J_DATABASE
 from .connector import Neo4jClient
-
-DATABASE = "order-management"
-
-REPO_ROOT = Path(__file__).resolve().parents[4]
-IMPORT_FILE_PATH = REPO_ROOT / "output" / "neo4j" / "order-management.jsonl"
 
 
 def read_operations(path: Path) -> list[dict[str, Any]]:
@@ -19,7 +15,7 @@ def read_operations(path: Path) -> list[dict[str, Any]]:
 
 
 def wipe_database(client: Neo4jClient) -> None:
-    with client.driver.session(database=DATABASE) as session:
+    with client.driver.session(database=NEO4J_DATABASE) as session:
         session.run(
             "MATCH (n) CALL (n) { DETACH DELETE n } IN TRANSACTIONS OF 10000 ROWS"
         ).consume()
@@ -41,12 +37,12 @@ def load(client: Neo4jClient, operations: Iterable[dict[str, Any]]) -> None:
         client.driver.execute_query(
             op["query"],
             None if rows is None else {"rows": rows},
-            database_=DATABASE,
+            database_=NEO4J_DATABASE,
         )
 
 
 def load_database(
-    client: Neo4jClient, path: Path = IMPORT_FILE_PATH, progress: bool = False
+    client: Neo4jClient, path: Path = LPG_JSONL_PATH, progress: bool = False
 ) -> None:
     operations: Iterable[dict[str, Any]] = read_operations(path)
     if progress:
@@ -57,7 +53,7 @@ def load_database(
 def main():
     with Neo4jClient() as client:
         wipe_database(client)
-        load_database(client, IMPORT_FILE_PATH, progress=True)
+        load_database(client, LPG_JSONL_PATH, progress=True)
 
 
 if __name__ == "__main__":

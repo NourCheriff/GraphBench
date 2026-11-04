@@ -15,12 +15,12 @@ from graphbench.rdf_utils import (
 
 from ..datareader.models import Attribute, OCELLog
 from ..datareader.reader import DataReader
-
-REPO_ROOT = Path(__file__).resolve().parents[3]
-DATASET_PATH = REPO_ROOT / "data" / "order-management.json"
-SCHEMA_PATH = REPO_ROOT / "docs" / "schemas" / "rdf" / "variants" / "v2.ttl"
-OUTPUT_PATH = REPO_ROOT / "output" / "rdf" / "order-management.ttl"
-MATERIALIZE_INVERSES = True
+from ..settings import (
+    DATASET_PATH,
+    MATERIALIZE_INVERSES,
+    RDF_OUTPUT_PATH,
+    RDF_SCHEMA_PATH,
+)
 
 OCEL = Namespace("https://graphbench.org/ocel#")
 OM = Namespace("https://graphbench.org/order-management#")
@@ -203,7 +203,7 @@ def save_graph(graph: Graph, path: Path, fmt: str = "turtle") -> None:
 
 
 def convert(
-    log: OCELLog, path: Path = OUTPUT_PATH, schema: Graph | None = None
+    log: OCELLog, path: Path = RDF_OUTPUT_PATH, schema: Graph | None = None
 ) -> None:
     graph = build_graph(log, MATERIALIZE_INVERSES)
     if schema is not None:
@@ -213,7 +213,7 @@ def convert(
 
 def main() -> None:
     ocel_log = DataReader().read(DATASET_PATH)
-    convert(ocel_log, OUTPUT_PATH, schema=Graph().parse(SCHEMA_PATH))
+    convert(ocel_log, RDF_OUTPUT_PATH, schema=Graph().parse(RDF_SCHEMA_PATH))
 
 
 if __name__ == "__main__":

@@ -5,11 +5,11 @@ import logging
 
 from ..backends.base import QueryBackend
 from ..backends.neo4j_backend.connector import Neo4jClient
-from ..backends.neo4j_backend.importer import DATABASE
 from ..backends.neo4j_backend.query_backend import Neo4jQueryBackend
 from ..backends.rdf_backend.connector import GraphDBClient
 from ..backends.rdf_backend.query_backend import RDFBackend
 from ..query import Query, QueryName
+from ..settings import NEO4J_DATABASE, QUERY_RUNS, QUERY_WARMUP_RUNS
 from .metrics import QueryTiming, repeat
 
 logger = logging.getLogger(__name__)
@@ -42,11 +42,13 @@ def measure_query(
     return timing
 
 
-def run_latency(warmup: int = 3, runs: int = 10) -> list[QueryTiming]:
+def run_latency(
+    warmup: int = QUERY_WARMUP_RUNS, runs: int = QUERY_RUNS
+) -> list[QueryTiming]:
     """Every query on both backends."""
     with Neo4jClient() as neo4j_client, GraphDBClient() as graphdb_client:
         backends: list[QueryBackend] = [
-            Neo4jQueryBackend(client=neo4j_client, database=DATABASE),
+            Neo4jQueryBackend(client=neo4j_client, database=NEO4J_DATABASE),
             RDFBackend(client=graphdb_client),
         ]
         return [

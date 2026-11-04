@@ -4,11 +4,7 @@ from .benchmark.latency import run_latency
 from .benchmark.pipeline import run_conversion, run_loading
 from .benchmark.reporting import create_run_dir, save_storage_measurements, save_timings
 from .benchmark.storage import measure_storage
-
-CONVERSION_RUNS = 5
-LOADING_RUNS = 1
-QUERY_WARMUP_RUNS = 3
-QUERY_RUNS = 10
+from .settings import CONVERSION_RUNS, LOADING_RUNS, QUERY_RUNS, QUERY_WARMUP_RUNS
 
 logger = logging.getLogger(__name__)
 

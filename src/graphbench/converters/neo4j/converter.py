@@ -3,17 +3,16 @@ from typing import Literal
 
 from ...datareader.models import OCELLog
 from ...datareader.reader import DataReader
+from ...settings import DATASET_PATH, LPG_CYPHER_PATH, LPG_JSONL_PATH
 from .cypher_generator import CypherGenerator
 from .cypher_writer import CypherWriter
 from .jsonl_writer import JsonlWriter
 
 type OutputFormat = Literal["jsonl", "cypher"]
 
-ROOT = Path(__file__).resolve().parents[4]
-DATASET_PATH = ROOT / "data" / "order-management.json"
 OUTPUT_PATHS: dict[OutputFormat, Path] = {
-    "jsonl": ROOT / "output" / "neo4j" / "order-management.jsonl",
-    "cypher": ROOT / "output" / "neo4j" / "order-management.cypher",
+    "jsonl": LPG_JSONL_PATH,
+    "cypher": LPG_CYPHER_PATH,
 }
 
 

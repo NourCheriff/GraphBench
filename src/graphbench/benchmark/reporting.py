@@ -5,10 +5,9 @@ from dataclasses import asdict
 from datetime import datetime
 from pathlib import Path
 
+from ..settings import RESULTS_DIR
 from .metrics import StorageMeasurement, Timing
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
-RESULTS_DIR = REPO_ROOT / "output" / "benchmark"
 STAT_COLUMNS = ["min_ms", "max_ms", "median_ms", "mean_ms", "stdev_ms"]
 
 

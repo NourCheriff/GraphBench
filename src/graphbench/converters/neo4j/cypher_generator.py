@@ -4,8 +4,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from ...datareader.models import OCELLog
-
-_BATCH_SIZE = 1000
+from ...settings import NEO4J_BATCH_SIZE
 
 _OBJECT_LABELS: dict[str, str] = {
     "customers": "Customer",
@@ -45,7 +44,7 @@ class Operation:
 class CypherGenerator:
     def __init__(
         self,
-        batch_size: int = _BATCH_SIZE,
+        batch_size: int = NEO4J_BATCH_SIZE,
         object_labels: dict[str, str] = _OBJECT_LABELS,
         o2o_relationships: dict[tuple[str, str, str], str] = _O2O_RELATIONSHIPS,
         versioned_attrs: set[tuple[str, str]] = _VERSIONED_ATTRS,

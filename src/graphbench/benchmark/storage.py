@@ -6,28 +6,31 @@ import subprocess
 import time
 
 from ..backends.neo4j_backend.connector import Neo4jClient
+from ..settings import (
+    GRAPHDB_CONTAINER,
+    GRAPHDB_JVM_MAIN_CLASS,
+    GRAPHDB_STORE_DIR,
+    NEO4J_CONTAINER,
+    NEO4J_JVM_MAIN_CLASS,
+    NEO4J_STOP_TIMEOUT,
+    NEO4J_STORE_DIR,
+    NEO4J_TRANSACTION_LOGS_DIR,
+)
 from .metrics import StorageMeasurement
 
 logger = logging.getLogger(__name__)
 
 
 JVMS = {
-    "graphdb": ("graphdb", "GraphDBWorkbench"),
-    "neo4j": ("neo4j", "Neo4jCommunity"),
+    "graphdb": (GRAPHDB_CONTAINER, GRAPHDB_JVM_MAIN_CLASS),
+    "neo4j": (NEO4J_CONTAINER, NEO4J_JVM_MAIN_CLASS),
 }
-DISK_PATHS = [
-    (
-        "graphdb",
-        "store",
-        "graphdb",
-        "/opt/graphdb/home/data/repositories/OrderManagement",
-    ),
-    ("neo4j", "store", "neo4j", "/data/databases/order-management"),
-    ("neo4j", "transaction_logs", "neo4j", "/data/transactions/order-management"),
-]
 
-# seconds docker waits for a clean shutdown before killing the container
-STOP_TIMEOUT = 120
+DISK_PATHS = [
+    ("graphdb", "store", GRAPHDB_CONTAINER, GRAPHDB_STORE_DIR),
+    ("neo4j", "store", NEO4J_CONTAINER, NEO4J_STORE_DIR),
+    ("neo4j", "transaction_logs", NEO4J_CONTAINER, NEO4J_TRANSACTION_LOGS_DIR),
+]
 
 
 def _docker(*args: str) -> str:
@@ -51,7 +54,7 @@ def disk_usage(container: str, path: str) -> int:
 
 def restart_neo4j() -> None:
     """Required to execute a checkpoint on Neo4j Community Edition"""
-    _docker("restart", "--time", str(STOP_TIMEOUT), "neo4j")
+    _docker("restart", "--time", str(NEO4J_STOP_TIMEOUT), NEO4J_CONTAINER)
 
     for _ in range(60):
         try:

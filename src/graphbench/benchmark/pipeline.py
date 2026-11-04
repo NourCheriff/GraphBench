@@ -10,8 +10,8 @@ from ..backends.neo4j_backend.connector import Neo4jClient
 from ..backends.rdf_backend import importer as graphdb_importer
 from ..converters import ocel_to_rdf
 from ..converters.neo4j import converter as lpg_converter
-from ..converters.ocel_to_rdf import DATASET_PATH
 from ..datareader.reader import DataReader
+from ..settings import CONVERSION_RUNS, DATASET_PATH, LOADING_RUNS
 from .metrics import Stage, StageTiming, Target, repeat
 
 logger = logging.getLogger(__name__)
@@ -47,7 +47,9 @@ def _measure(
     return timing
 
 
-def run_conversion(runs: int = 5, dataset: Path = DATASET_PATH) -> list[StageTiming]:
+def run_conversion(
+    runs: int = CONVERSION_RUNS, dataset: Path = DATASET_PATH
+) -> list[StageTiming]:
     reader = DataReader()
     log = reader.read(dataset)
 
@@ -58,7 +60,7 @@ def run_conversion(runs: int = 5, dataset: Path = DATASET_PATH) -> list[StageTim
     ]
 
 
-def run_loading(runs: int = 1) -> list[StageTiming]:
+def run_loading(runs: int = LOADING_RUNS) -> list[StageTiming]:
     graphdb_importer.ensure_repository()
 
     with Neo4jClient() as client:

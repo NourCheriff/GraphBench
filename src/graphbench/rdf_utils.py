@@ -1,9 +1,11 @@
 from __future__ import annotations
-from datetime import datetime, timezone
-from urllib.parse import quote, unquote
-from rdflib import XSD, Literal, Namespace, URIRef
 
 import re
+from datetime import UTC, datetime
+from urllib.parse import quote, unquote
+
+from rdflib import XSD, Literal, Namespace, URIRef
+
 
 def iri(namespace: Namespace, identifier: str) -> URIRef:
     return namespace[quote(identifier, safe="")]
@@ -16,7 +18,7 @@ def decode(iri: str) -> str:
 def time_literal(value: datetime) -> Literal:
     if value.tzinfo is None:
         raise ValueError(f"timestamp without timezone: {value}")
-    return Literal(value.astimezone(timezone.utc).isoformat(), datatype=XSD.dateTime)
+    return Literal(value.astimezone(UTC).isoformat(), datatype=XSD.dateTime)
 
 
 def value_literal(value: object) -> Literal:

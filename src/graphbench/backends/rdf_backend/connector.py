@@ -1,10 +1,10 @@
 from SPARQLWrapper import JSON, SPARQLWrapper
 
-_URI = "http://localhost:7200/repositories/OrderManagement"
+from ...settings import GRAPHDB_REPOSITORY_URL
 
 
 class GraphDBClient:
-    def __init__(self, uri: str = _URI):
+    def __init__(self, uri: str = GRAPHDB_REPOSITORY_URL):
         self._uri = uri
         self._client: SPARQLWrapper | None = None
 
