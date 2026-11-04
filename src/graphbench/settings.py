@@ -14,6 +14,7 @@ RDF_OUTPUT_PATH = REPO_ROOT / "output" / "rdf" / "order-management.ttl"
 LPG_JSONL_PATH = REPO_ROOT / "output" / "neo4j" / "order-management.jsonl"
 LPG_CYPHER_PATH = REPO_ROOT / "output" / "neo4j" / "order-management.cypher"
 RESULTS_DIR = REPO_ROOT / "output" / "benchmark"
+PLOTS_DIR_NAME = "plots"  # subfolder of each run folder
 
 
 MATERIALIZE_INVERSES = True

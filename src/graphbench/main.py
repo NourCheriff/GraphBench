@@ -2,6 +2,7 @@ import logging
 
 from .benchmark.latency import run_latency
 from .benchmark.pipeline import run_conversion, run_loading
+from .benchmark.plots import plot_run
 from .benchmark.reporting import create_run_dir, save_storage_measurements, save_timings
 from .benchmark.storage import measure_storage
 from .settings import CONVERSION_RUNS, LOADING_RUNS, QUERY_RUNS, QUERY_WARMUP_RUNS
@@ -29,6 +30,8 @@ def main() -> None:
 
     latency = run_latency(warmup=QUERY_WARMUP_RUNS, runs=QUERY_RUNS)
     save_timings(latency, run_dir, "query_latency")
+
+    plot_run(run_dir)
 
     logger.info("Results saved to %s", run_dir)
 
