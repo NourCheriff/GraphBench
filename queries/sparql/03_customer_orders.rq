@@ -5,7 +5,7 @@ PREFIX ocel: <https://graphbench.org/ocel#>
 PREFIX om: <https://graphbench.org/order-management#>
 PREFIX obj: <https://graphbench.org/order-management/data/object/>
 
-SELECT ?order ?date ?price (COUNT(?items) AS ?totalItems)
+SELECT ?order ?date ?price ?items
 WHERE {
   VALUES ?customer { obj:Riviera%20Robotics%20SAS }
   
@@ -18,5 +18,4 @@ WHERE {
     			om:order	?order			;
     			ocel:time	?date			.
 }
-GROUP BY ?order ?date ?price
 ORDER BY ?date

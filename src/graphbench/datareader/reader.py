@@ -1,6 +1,6 @@
 import json
 from collections.abc import Callable
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -16,7 +16,7 @@ from .models import (
 
 
 def _parse_time(value: str) -> datetime:
-    return datetime.fromisoformat(value).astimezone(timezone.utc)
+    return datetime.fromisoformat(value).astimezone(UTC)
 
 
 _COERCERS: dict[str, Callable[[Any], Any]] = {
@@ -126,7 +126,9 @@ class DataReader:
             time = _parse_time(attr["time"]) if "time" in attr else None
             type_name = declared_types.get(attr["name"])
             if type_name not in _COERCERS:
-                raise ValueError(f"attribute '{attr['name']}' not managed with type not managed: {type_name!r}")
+                raise ValueError(
+                    f"attribute '{attr['name']}' not managed with type not managed: {type_name!r}"
+                )
             coerce = _COERCERS.get(declared_types.get(attr["name"]))
             attributes.append(
                 Attribute(name=attr["name"], time=time, value=coerce(attr["value"]))

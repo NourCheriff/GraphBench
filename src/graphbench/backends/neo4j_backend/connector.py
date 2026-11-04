@@ -2,12 +2,11 @@ from typing import Self
 
 from neo4j import Driver, GraphDatabase
 
-_URI = "neo4j://localhost:7687"
-_AUTH = ("neo4j", "neo4j-pwd")
+from ...settings import NEO4J_AUTH, NEO4J_URI
 
 
 class Neo4jClient:
-    def __init__(self, uri: str = _URI, auth: tuple[str, str] = _AUTH):
+    def __init__(self, uri: str = NEO4J_URI, auth: tuple[str, str] = NEO4J_AUTH):
         self._uri = uri
         self._auth = auth
         self._driver: Driver | None = None
@@ -27,7 +26,7 @@ class Neo4jClient:
         except Exception as ex:
             driver.close()
             raise ConnectionError(
-                f"Cannot connect to Neo4j instance on uri:{_URI}"
+                f"Cannot connect to Neo4j instance on uri:{self._uri}"
             ) from ex
 
     @property

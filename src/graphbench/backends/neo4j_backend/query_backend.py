@@ -3,10 +3,9 @@ from pathlib import Path
 from neo4j import RoutingControl
 
 from ...query import Query
+from ...settings import CYPHER_QUERIES_DIR
 from ..base import QueryBackend, Row
 from .connector import Neo4jClient
-
-_QUERIES_DIR = Path(__file__).resolve().parents[4] / "queries" / "cypher"
 
 
 class Neo4jQueryBackend(QueryBackend):
@@ -14,7 +13,7 @@ class Neo4jQueryBackend(QueryBackend):
     extension = "cypher"
 
     def __init__(
-        self, client: Neo4jClient, database: str, queries_dir: Path = _QUERIES_DIR
+        self, client: Neo4jClient, database: str, queries_dir: Path = CYPHER_QUERIES_DIR
     ):
         super().__init__(queries_dir)
         self._client = client
