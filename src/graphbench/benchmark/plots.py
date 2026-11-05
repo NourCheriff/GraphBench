@@ -15,6 +15,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.ticker import NullFormatter
 
+from ..query import PARAMETERS
 from ..settings import PLOTS_DIR_NAME, RESULTS_DIR
 
 logger = logging.getLogger(__name__)
@@ -188,7 +189,6 @@ def plot_query_latency(run_dir: Path, out_dir: Path) -> Path:
 
     values = {b: [] for b in BACKENDS}
     errors = {b: [[], []] for b in BACKENDS}  # [below median, above median]
-    runs = set()
     for backend in BACKENDS:
         for query in queries:
             t = times.get((backend, query), [])
@@ -201,7 +201,13 @@ def plot_query_latency(run_dir: Path, out_dir: Path) -> Path:
             values[backend].append(median)
             errors[backend][0].append(median - q1)
             errors[backend][1].append(q3 - median)
-            runs.add(len(t))
+
+    passes = min(len(t) for t in times.values())
+    most = max(len(t) for t in times.values())
+    subtitle = f"{passes} measured passes"
+    if most > passes:
+        names = ", ".join(f"Q{name[:2]}" for name in PARAMETERS)
+        subtitle += f"; {names}: {most // passes} IDs per pass ({most} runs)"
 
     fig, ax = plt.subplots(figsize=(8, 7))
     _grouped_bars(ax, groups, values, errors, horizontal=True)
@@ -218,7 +224,7 @@ def plot_query_latency(run_dir: Path, out_dir: Path) -> Path:
     _style(
         ax,
         "Query latency",
-        f"{'/'.join(map(str, sorted(runs)))} measured runs per query",
+        subtitle,
         value_axis="x",
     )
 
