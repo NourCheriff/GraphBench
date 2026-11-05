@@ -1,9 +1,10 @@
 import logging
 
+from .analysis.sna import compute_sna
 from .benchmark.latency import run_latency
 from .benchmark.pipeline import run_conversion, run_loading
 from .benchmark.plots import plot_run
-from .benchmark.reporting import create_run_dir, save_storage_measurements, save_timings
+from .benchmark.reporting import create_run_dir, save_rows, save_timings
 from .benchmark.storage import measure_storage
 from .settings import CONVERSION_RUNS, LOADING_RUNS, QUERY_RUNS, QUERY_WARMUP_RUNS
 
@@ -26,7 +27,9 @@ def main() -> None:
     save_timings(pipeline, run_dir, "pipeline")
 
     # measured once, right after loading
-    save_storage_measurements(measure_storage(), run_dir, "storage")
+    save_rows(measure_storage(), run_dir, "storage")
+
+    save_rows(compute_sna(), run_dir, "sna")
 
     latency = run_latency(warmup=QUERY_WARMUP_RUNS, runs=QUERY_RUNS)
     save_timings(latency, run_dir, "query_latency")

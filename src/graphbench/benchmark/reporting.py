@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 
 from ..settings import RESULTS_DIR
-from .metrics import StorageMeasurement, Timing
+from .metrics import Timing
 
 STAT_COLUMNS = ["min_ms", "max_ms", "median_ms", "mean_ms", "stdev_ms"]
 
@@ -48,9 +48,7 @@ def save_timings(results: list[Timing], run_dir: Path, name: str) -> tuple[Path,
     return summary_path, runs_path
 
 
-def save_storage_measurements(
-    rows: list[StorageMeasurement], run_dir: Path, name: str
-) -> Path:
+def save_rows(rows: list, run_dir: Path, name: str) -> Path:
     if not rows:
         raise ValueError(f"no rows to save for {name!r}")
 
