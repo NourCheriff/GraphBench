@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import StrEnum
 
 
@@ -20,7 +20,15 @@ class QueryName(StrEnum):
     Q13_TOP_SHIPPERS = "13_top_shippers"
 
 
+PARAMETERS: dict[QueryName, str] = {
+    QueryName.Q01_ORDER_EVENT_SEQUENCE: "order",
+    QueryName.Q02_EVENT_OBJECTS: "event",
+    QueryName.Q03_CUSTOMER_ORDERS: "customer",
+}
+
+
 @dataclass(frozen=True)
 class Query:
     name: QueryName
     text: str
+    params: dict[str, str] = field(default_factory=dict)

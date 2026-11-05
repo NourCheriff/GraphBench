@@ -1,10 +1,14 @@
+import re
 from pathlib import Path
 
+from ...converters.ocel_to_rdf import EVENT, OBJ
 from ...query import Query
-from ...rdf_utils import decode
+from ...rdf_utils import decode, iri
 from ...settings import SPARQL_QUERIES_DIR
 from ..base import QueryBackend, Row
 from .connector import GraphDBClient
+
+PARAMETER_NAMESPACE = {"order": OBJ, "event": EVENT, "customer": OBJ}
 
 
 class RDFBackend(QueryBackend):
@@ -30,4 +34,12 @@ class RDFBackend(QueryBackend):
         return rows
 
     def execute(self, query: Query) -> list[dict]:
-        return self._to_rows(self._client.query(query.text))
+        return self._to_rows(self._client.query(self._fill(query)))
+
+    @staticmethod
+    def _fill(query: Query) -> str:
+        text = query.text
+        for name, id_ in query.params.items():
+            value = iri(PARAMETER_NAMESPACE[name], id_).n3()
+            text = re.sub(rf"\${name}\b", lambda _: value, text)
+        return text

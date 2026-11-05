@@ -1,11 +1,11 @@
 # Q2 - Event objects
 # Which are the objects involved given a specific event
+# $event is replaced with the IRI of the ID by the benchmark
 
-PREFIX ev: <https://graphbench.org/order-management/data/event/>
 PREFIX ocel: <https://graphbench.org/ocel#>
 
 SELECT ?object
 WHERE {
-  VALUES ?event { ev:create_p-660979 }
+  VALUES ?event { $event }
   ?event ocel:hasObject ?object .
 }

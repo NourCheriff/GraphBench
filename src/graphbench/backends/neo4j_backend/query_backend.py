@@ -21,7 +21,10 @@ class Neo4jQueryBackend(QueryBackend):
 
     def execute(self, query: Query) -> list[Row]:
         records, _, _ = self._client.driver.execute_query(
-            query.text, database_=self._database, routing_=RoutingControl.READ
+            query.text,
+            parameters_=query.params,
+            database_=self._database,
+            routing_=RoutingControl.READ,
         )
 
         return [record.data() for record in records]

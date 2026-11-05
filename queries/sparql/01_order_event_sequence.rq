@@ -1,13 +1,13 @@
 # Q1 - Order event sequence
 # Which are the events involved given a specific order
+# $order is replaced with the IRI of the ID by the benchmark
 
 PREFIX ocel: <https://graphbench.org/ocel#>
 PREFIX om: <https://graphbench.org/order-management#>
-PREFIX obj: <https://graphbench.org/order-management/data/object/>
 
 SELECT ?time ?event ?type
 WHERE {
-  VALUES ?order { obj:o-990679 }
+  VALUES ?order { $order }
   ?event om:order ?order ;
          a ?type ;
          ocel:time ?time .

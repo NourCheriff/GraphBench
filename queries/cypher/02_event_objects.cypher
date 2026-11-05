@@ -1,4 +1,4 @@
-MATCH (event:Event {id: "create_p-660979"})-[eventLink]-(object:Object)
+MATCH (event:Event {id: $event})-[eventLink]-(object:Object)
 
 RETURN DISTINCT
   event,
