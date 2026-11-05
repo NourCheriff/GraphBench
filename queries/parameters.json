@@ -1,0 +1,128 @@
+{
+  "01_order_event_sequence": [
+    {
+      "id": "o-990001",
+      "degree": 3
+    },
+    {
+      "id": "o-990002",
+      "degree": 3
+    },
+    {
+      "id": "o-990003",
+      "degree": 4
+    },
+    {
+      "id": "o-990004",
+      "degree": 4
+    },
+    {
+      "id": "o-990037",
+      "degree": 5
+    },
+    {
+      "id": "o-990095",
+      "degree": 5
+    },
+    {
+      "id": "o-990183",
+      "degree": 6
+    },
+    {
+      "id": "o-990203",
+      "degree": 6
+    },
+    {
+      "id": "o-990679",
+      "degree": 7
+    },
+    {
+      "id": "o-990720",
+      "degree": 7
+    }
+  ],
+  "02_event_objects": [
+    {
+      "id": "out_of_stock_i-880007",
+      "degree": 3
+    },
+    {
+      "id": "confirm_o-990027",
+      "degree": 7
+    },
+    {
+      "id": "confirm_o-990008",
+      "degree": 11
+    },
+    {
+      "id": "confirm_o-990003",
+      "degree": 14
+    },
+    {
+      "id": "confirm_o-990004",
+      "degree": 18
+    },
+    {
+      "id": "confirm_o-990084",
+      "degree": 22
+    },
+    {
+      "id": "confirm_o-991019",
+      "degree": 26
+    },
+    {
+      "id": "create_p-660019",
+      "degree": 29
+    },
+    {
+      "id": "create_p-660979",
+      "degree": 33
+    },
+    {
+      "id": "send_p-660903",
+      "degree": 37
+    }
+  ],
+  "03_customer_orders": [
+    {
+      "id": "Danube Pharmaceuticals BV",
+      "degree": 404
+    },
+    {
+      "id": "Nordica Systems GmbH",
+      "degree": 457
+    },
+    {
+      "id": "AlpenTech Innovations AG",
+      "degree": 464
+    },
+    {
+      "id": "Iberian Sun Solaridades SA",
+      "degree": 476
+    },
+    {
+      "id": "Mediterranea Luxury Cruises S.p.A.",
+      "degree": 493
+    },
+    {
+      "id": "Baltic Wave Energies Ltd.",
+      "degree": 513
+    },
+    {
+      "id": "Celtica Green Farms Oy",
+      "degree": 545
+    },
+    {
+      "id": "SwissPeak Timepieces AG",
+      "degree": 575
+    },
+    {
+      "id": "Golden Fleece Textiles S.A.R.L.",
+      "degree": 581
+    },
+    {
+      "id": "Riviera Robotics SAS",
+      "degree": 616
+    }
+  ]
+}

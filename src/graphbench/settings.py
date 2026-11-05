@@ -8,6 +8,7 @@ RDF_SCHEMA_PATH = REPO_ROOT / "docs" / "schemas" / "rdf" / "variants" / "v2.ttl"
 GRAPHDB_CONFIG_PATH = REPO_ROOT / "config" / "rdf" / "order-management-config.ttl"
 SPARQL_QUERIES_DIR = REPO_ROOT / "queries" / "sparql"
 CYPHER_QUERIES_DIR = REPO_ROOT / "queries" / "cypher"
+QUERY_PARAMETERS_PATH = REPO_ROOT / "queries" / "parameters.json"
 
 
 RDF_OUTPUT_PATH = REPO_ROOT / "output" / "rdf" / "order-management.ttl"
@@ -46,3 +47,4 @@ LOADING_RUNS = 5
 QUERY_WARMUP_RUNS = 5
 QUERY_RUNS = 50
 QUERY_SEED = 42
+QUERY_PARAMETER_COUNT = 10
