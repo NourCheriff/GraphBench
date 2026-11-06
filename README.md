@@ -1,58 +1,88 @@
 # GraphBench
 
-Comparative study of RDF triplestore and graph approaches for modeling and querying large OCEL datasets, with a focus on expressiveness and performance.
+Comparative study of an RDF triplestore (GraphDB) and a labeled property graph (Neo4j) for modeling and querying an OCEL 2.0 event log, with a focus on expressiveness and performance.
 
 ## Table of Contents
 
-1. [Project Structure](#project-structure)
-2. [Background: OCEL 2.0](#background-ocel-20)
-3. [Dataset](#dataset)
-   1. [Physical Schema (SQLite)](#physical-schema-sqlite)
-4. [Analysis](#analysis)
-   1. [Event Types](#event-types)
-   2. [Object Types](#object-types)
-   3. [Event-to-Object Relationships (E2O)](#event-to-object-relationships-e2o)
-   4. [Object-to-Object Relationships (O2O)](#object-to-object-relationships-o2o)
-   5. [Domain Considerations](#domain-considerations)
-5. [Knowledge Graph Model](#knowledge-graph-model)
+1. [Getting Started](#getting-started)
+2. [Project Structure](#project-structure)
+3. [Background: OCEL 2.0](#background-ocel-20)
+4. [Dataset](#dataset)
+5. [Analysis](#analysis)
+6. [Knowledge Graph Model](#knowledge-graph-model)
    1. [Neo4j](#neo4j)
    2. [GraphDB](#graphdb)
-6. [Benchmarking](#benchmarking)
+7. [Benchmarking](#benchmarking)
 
 ---
 
+# Getting Started
+
+## Technologies
+
+| Technology | Use |
+| --- | --- |
+| [Python 3.14](https://www.python.org/) + [uv](https://docs.astral.sh/uv/) | conversion, loading, benchmark |
+| [rdflib](https://rdflib.readthedocs.io/) | builds and serializes the RDF graph |
+| [GraphDB 10.8](https://graphdb.ontotext.com/documentation/10.8/) | RDF triplestore, queried with [SPARQLWrapper](https://sparqlwrapper.readthedocs.io/) and loaded with [requests](https://requests.readthedocs.io/) |
+| [Neo4j 2026.10](https://neo4j.com/docs/) | LPG database, via the [Neo4j Python driver](https://neo4j.com/docs/python-manual/current/) |
+| [Docker Compose](https://docs.docker.com/compose/) | runs both databases |
+| [matplotlib](https://matplotlib.org/) | benchmark plots |
+
+## Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) with Docker Compose
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) (installs Python 3.14 if missing)
+
+## Setup
+
+```bash
+uv sync                      # create .venv and install the dependencies
+source .venv/bin/activate    # optional: without it, prefix commands with `uv run`
+docker compose up -d         # start GraphDB and Neo4j
+```
+
+| Interface         | URL                     | Access                                         |
+| ----------------- | ----------------------- | ---------------------------------------------- |
+| GraphDB Workbench | <http://localhost:7200> | repository `OrderManagement` (created on first load) |
+| Neo4j Browser     | <http://localhost:7474> | user `neo4j`, password `neo4j-pwd`, database `order-management` |
+
+## Running
+
+Modules must be run with `-m` from the repository root.
+
+| Task                     | Command                                                  |
+| ------------------------ | -------------------------------------------------------- |
+| Convert to RDF           | `python -m graphbench.converters.ocel_to_rdf`            |
+| Convert to LPG           | `python -m graphbench.converters.neo4j.converter`        |
+| Load into GraphDB        | `python -m graphbench.backends.rdf_backend.importer`     |
+| Load into Neo4j          | `python -m graphbench.backends.neo4j_backend.importer`   |
+| Full benchmark           | `python -m graphbench.main`                              |
+| Plots of a run           | `python -m graphbench.benchmark.plots [run_dir]`         |
+| Graph metrics            | `python -m graphbench.analysis.sna`                      |
+| Reselect query IDs       | `python -m graphbench.analysis.parameters`               |
+
+> [!IMPORTANT]
+> Loading needs the converted files and empties the database first; SNA needs both databases loaded. The full benchmark runs every step, conversion included.
+
 # Project Structure
 
-The repository is organized into the following directories:
-
-| Directory / File     | Description                                                                                               |
-| -------------------- | --------------------------------------------------------------------------------------------------------- |
-| `data/`              | Input dataset used by the project, including the OCEL 2.0 Order Management event log.                     |
-| `docker-compose.yml` | Defines and orchestrates the project's containerized services, including the graph database environments. |
-| `docs/`              | Documentation and data-model definitions, including LPG and RDF schemas and their diagrams.               |
-| `docs/img/`          | Diagrams and visualizations of the OCEL metamodel, LPG model, RDF model, and SQLite schema.               |
-| `docs/lpg-model/`    | Neo4j/LPG schema definitions and import files.                                                            |
-| `docs/rdf-model/`    | RDF schema definitions, Turtle files, and GraphDB import/layout files.                                    |
-| `output/`            | Generated artifacts produced by the conversion and benchmarking workflows.                                |
-| `output/benchmark/`  | Benchmark results and related generated files.                                                            |
-| `output/neo4j/`      | Generated Neo4j/Cypher representations of the OCEL dataset.                                               |
-| `output/rdf/`        | Generated RDF/Turtle representations of the OCEL dataset.                                                 |
-| `queries/`           | Queries used for evaluating and comparing the graph models.                                               |
-| `queries/cypher/`    | Cypher queries for the Neo4j/LPG model.                                                                   |
-| `queries/sparql/`    | SPARQL queries for the RDF/GraphDB model.                                                                 |
-| `src/`               | Python source code for data conversion and benchmarking.                                                  |
-| `src/converters/`    | Converters that transform OCEL data into Neo4j/Cypher and RDF/Turtle representations.                     |
-| `src/benchmark/`     | Benchmarking utilities and the benchmark runner.                                                          |
-| `requirements.txt`   | Python dependencies required by the project.                                                              |
-
-## Graph Database Interfaces
-
-When the project is started using `Docker Compose`, the web interfaces of the graph databases are available at:
-
-- **Neo4j:** `http://localhost:7474`
-- **GraphDB:** `http://localhost:7200`
-
-These interfaces can be used to inspect the loaded graph data and execute **Cypher** or **SPARQL** queries, respectively.
+| Path                        | Content                                                     |
+| --------------------------- | ----------------------------------------------------------- |
+| `data/`                     | OCEL 2.0 Order Management log (JSON)                        |
+| `docs/schemas/`             | LPG and RDF schemas                                         |
+| `docs/img/`                 | diagrams                                                    |
+| `config/rdf/`               | GraphDB repository configuration                            |
+| `queries/`                  | Cypher and SPARQL queries, `parameters.json` (query IDs)    |
+| `src/graphbench/`           | Python package                                              |
+| ├── `settings.py`           | all settings (paths, connections, run counts)               |
+| ├── `datareader/`           | reads the OCEL log into a shared model                      |
+| ├── `converters/`           | OCEL → RDF, OCEL → LPG                                      |
+| ├── `backends/`             | connection, loading and querying for each database          |
+| ├── `benchmark/`            | timings, storage, latency, plots                            |
+| ├── `analysis/`             | graph metrics, query ID selection                           |
+| └── `main.py`               | runs the full benchmark                                     |
+| `output/`                   | converted files (`rdf/`, `neo4j/`) and results (`benchmark/`) |
 
 ---
 
@@ -220,7 +250,7 @@ Relationships are split by **how they are obtained**, because this affects the c
 
 ## Neo4j
 
-The LPG model is defined in [`docs/lpg-model/LPG_schema.cypher`](docs/lpg-model/LPG_schema.cypher) using [`Cypher`](https://neo4j.com/docs/cypher-manual/current/introduction/).
+The LPG model is defined in [`docs/schemas/lpg/schema.cypher`](docs/schemas/lpg/schema.cypher) using [`Cypher`](https://neo4j.com/docs/cypher-manual/current/introduction/).
 
 The model diagram was created with [arrows.app](https://arrows.app).
 
@@ -230,9 +260,21 @@ The LPG model represents customers, employees, orders, products, packages, and e
 
 The **blue** nodes represent the **objects**. The **orange** nodes are the events.
 
+### Generating the Neo4j dataset
+
+```bash
+python -m graphbench.converters.neo4j.converter
+```
+
+1. **Read**: the shared `DataReader` loads `data/order-management.json`, as for RDF.
+2. **Generate**: uniqueness constraints, then nodes, relationships (E2O, O2O, `HAS_PRICE`) and indexes. Each operation is a parametrized `UNWIND $rows` query with up to 1,000 rows, using `MERGE` (idempotent).
+3. **Write**: the same operations in two formats in `output/neo4j/`:
+   - `order-management.jsonl`: one query and its rows per line, used for loading (rows are sent as parameters);
+   - `order-management.cypher`: standalone script with the rows inlined.
+
 ## GraphDB
 
-The RDF model is defined in [`docs/rdf-model/RDF_schema.ttl`](docs/rdf-model/RDF_schema.ttl).
+The RDF model is defined in [`docs/schemas/rdf/schema.ttl`](docs/schemas/rdf/schema.ttl).
 
 ![RDF model](docs/img/rdf_model_diagram.png)
 
@@ -241,16 +283,77 @@ Two namespaces are used: `ocel:` for the metamodel concepts (`Event`, `Object`, 
 ### Generating the RDF dataset
 
 ```bash
-uv run python -m graphbench.converters.ocel_to_rdf
+python -m graphbench.converters.ocel_to_rdf
 ```
 
-The conversion from OCEL 2.0 to RDF runs in four steps:
-
-1. **Read**: the shared `DataReader` loads `data/order-management.json` and normalizes it. The same reader is used by the Neo4j converter, so both graphs start from identical data.
-2. **Build**: events, objects, attributes and E2O/O2O relationships are mapped to the classes and properties of the ontology through the mapping tables at the top of the converter.
-3. **Validate**: every class and property used in the data must be declared in the ontology; otherwise the conversion stops.
+1. **Read**: the shared `DataReader` loads `data/order-management.json` and normalizes it.
+2. **Build**: events, objects, attributes and E2O/O2O relationships are mapped to the classes and properties of the ontology.
+3. **Validate**: every class and property used must be declared in the ontology; otherwise the conversion stops.
 4. **Write**: the graph is saved to `output/rdf/order-management.ttl`.
 
 # Benchmarking
 
-TBD (WP7, WP8, WP11)
+```bash
+docker compose down -v && docker compose up -d   # fresh volumes, for accurate disk sizes
+python -m graphbench.main
+```
+
+Results go to `output/benchmark/<timestamp>/` (CSV files and `plots/`).
+
+## What is measured
+
+| Phase      | Measure                                                                 |
+| ---------- | ----------------------------------------------------------------------- |
+| Conversion | time to read the OCEL log, and to convert it to RDF and to LPG (file write included) |
+| Loading    | time to import the converted file into each database, after emptying it |
+| Storage    | live JVM heap after garbage collection, and size on disk                |
+| Graph      | node and edge counts, density, degree ([definitions](docs/sna-metrics.md)) |
+| Queries    | latency of the 13 queries (same row counts on both databases)           |
+
+- Every timed run is repeated; resets and garbage collection run before each run, untimed.
+- Queries: warm-up passes first, then measured passes with a shuffled query order, alternating which database runs first.
+- Memory settings are fixed in `docker-compose.yml`: 2 GB heap for both, plus 2 GB page cache for Neo4j.
+
+## Queries
+
+| # | Query | Question | Files |
+| --- | --- | --- | --- |
+| Q01 \* | Order event sequence | Which are the events involved given a specific order | [cypher](queries/cypher/01_order_event_sequence.cypher) · [sparql](queries/sparql/01_order_event_sequence.rq) |
+| Q02 \* | Event objects | Which are the objects involved given a specific event | [cypher](queries/cypher/02_event_objects.cypher) · [sparql](queries/sparql/02_event_objects.rq) |
+| Q03 \* | Customer orders | Which are the orders placed given a specific customer | [cypher](queries/cypher/03_customer_orders.cypher) · [sparql](queries/sparql/03_customer_orders.rq) |
+| Q04 | Order lead time | How long each order takes, from placement to the delivery of its last package | [cypher](queries/cypher/04_order_lead_time.cypher) · [sparql](queries/sparql/04_order_lead_time.rq) |
+| Q05 | Average order lead time | What is the average lead time of the fully delivered orders | [cypher](queries/cypher/05_average_order_lead_time.cypher) · [sparql](queries/sparql/05_average_order_lead_time.rq) |
+| Q06 | Product price history | How the price changes over time given a specific product | [cypher](queries/cypher/06_product_price_history.cypher) · [sparql](queries/sparql/06_product_price_history.rq) |
+| Q07 | Top sales rep | Which is the sales person who confirmed the most orders | [cypher](queries/cypher/07_top_sales_rep.cypher) · [sparql](queries/sparql/07_top_sales_rep.rq) |
+| Q08 | Top customer | Which is the customer who placed the most orders, and how much they spent in total | [cypher](queries/cypher/08_top_customer.cypher) · [sparql](queries/sparql/08_top_customer.rq) |
+| Q09 | Top selling products | Which are the 10 products with the most items sold | [cypher](queries/cypher/09_top_selling_products.cypher) · [sparql](queries/sparql/09_top_selling_products.rq) |
+| Q10 | Failed delivery ratio | What is the ratio of failed deliveries to the total delivery attempts (failed + successful) | [cypher](queries/cypher/10_failed_delivery_ratio.cypher) · [sparql](queries/sparql/10_failed_delivery_ratio.rq) |
+| Q11 | Average items per package | What is the average number of items contained in a package | [cypher](queries/cypher/11_average_items_per_package.cypher) · [sparql](queries/sparql/11_average_items_per_package.rq) |
+| Q12 | Split orders ratio | What is the ratio of orders whose items are spread over different packages to the total orders | [cypher](queries/cypher/12_split_orders_ratio.cypher) · [sparql](queries/sparql/12_split_orders_ratio.rq) |
+| Q13 | Top shippers | Which are the 3 shippers who delivered the most packages | [cypher](queries/cypher/13_top_shippers.cypher) · [sparql](queries/sparql/13_top_shippers.rq) |
+
+> [!NOTE]
+> \* Parametrized: run with 10 IDs each, from the least to the most connected ([`queries/parameters.json`](queries/parameters.json)).
+
+## Settings
+
+All settings are in [`src/graphbench/settings.py`](src/graphbench/settings.py):
+
+| Setting                 | Meaning                              |
+| ----------------------- | ------------------------------------ |
+| `CONVERSION_RUNS`       | repetitions of each conversion       |
+| `LOADING_RUNS`          | repetitions of each load             |
+| `QUERY_WARMUP_RUNS`     | warm-up passes over all queries      |
+| `QUERY_RUNS`            | measured passes                      |
+| `QUERY_SEED`            | seed of the query shuffling          |
+| `QUERY_PARAMETER_COUNT` | IDs per parametrized query           |
+
+Connections, credentials and paths are in the same file; values shared with `docker-compose.yml` must be changed in both.
+
+## Results
+
+![Conversion and loading time](output/benchmark/20261104-191830/plots/pipeline.png)
+
+![Memory and disk usage](output/benchmark/20261104-191830/plots/storage.png)
+
+![Query latency](output/benchmark/20261104-191830/plots/query_latency.png)
