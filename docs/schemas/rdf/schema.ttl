@@ -15,12 +15,6 @@
 #    Object Properties
 #################################################################
 
-###  https://graphbench.org/ocel#hasAttributeValue
-ocel:hasAttributeValue rdf:type owl:ObjectProperty ;
-                       rdfs:domain ocel:Object ;
-                       rdfs:range ocel:AttributeValue .
-
-
 ###  https://graphbench.org/ocel#hasObject
 ocel:hasObject rdf:type owl:ObjectProperty ;
                rdfs:domain ocel:Event ;
@@ -91,6 +85,12 @@ om:forwarder rdf:type owl:ObjectProperty ;
              rdfs:range om:Employee .
 
 
+###  https://graphbench.org/order-management#hasPrice
+om:hasPrice rdf:type owl:ObjectProperty ;
+            rdfs:domain om:Product ;
+            rdfs:range ocel:AttributeValue .
+
+
 ###  https://graphbench.org/order-management#isA
 om:isA rdf:type owl:ObjectProperty ;
        rdfs:subPropertyOf ocel:relatedTo ;
@@ -140,11 +140,11 @@ om:places rdf:type owl:ObjectProperty ;
           rdfs:range om:Order .
 
 
-###  https://graphbench.org/order-management#primarySalesRep
-om:primarySalesRep rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf ocel:relatedTo ;
-                   rdfs:domain om:Employee ;
-                   rdfs:range om:Customer .
+###  https://graphbench.org/order-management#primarySalesRepOf
+om:primarySalesRepOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf ocel:relatedTo ;
+                     rdfs:domain om:Employee ;
+                     rdfs:range om:Customer .
 
 
 ###  https://graphbench.org/order-management#product
@@ -161,11 +161,11 @@ om:salesPerson rdf:type owl:ObjectProperty ;
                rdfs:range om:Employee .
 
 
-###  https://graphbench.org/order-management#secondarySalesRep
-om:secondarySalesRep rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf ocel:relatedTo ;
-                     rdfs:domain om:Employee ;
-                     rdfs:range om:Customer .
+###  https://graphbench.org/order-management#secondarySalesRepOf
+om:secondarySalesRepOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf ocel:relatedTo ;
+                       rdfs:domain om:Employee ;
+                       rdfs:range om:Customer .
 
 
 ###  https://graphbench.org/order-management#shippedBy
@@ -193,13 +193,6 @@ om:shipper rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  https://graphbench.org/ocel#attributeName
-ocel:attributeName rdf:type owl:DatatypeProperty ,
-                            owl:FunctionalProperty ;
-                   rdfs:domain ocel:AttributeValue ;
-                   rdfs:range xsd:string .
-
-
 ###  https://graphbench.org/ocel#time
 ocel:time rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
@@ -215,11 +208,37 @@ ocel:time rdf:type owl:DatatypeProperty ,
 ocel:value rdf:type owl:DatatypeProperty ,
                     owl:FunctionalProperty ;
            rdfs:domain ocel:AttributeValue ;
-           rdfs:range [ rdf:type rdfs:Datatype ;
-                        owl:unionOf ( xsd:decimal
-                                      xsd:string
+           rdfs:range xsd:float .
+
+
+###  https://graphbench.org/order-management#price
+om:price rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( om:Item
+                                     om:Order
+                                   )
+                     ] ;
+         rdfs:range xsd:float .
+
+
+###  https://graphbench.org/order-management#role
+om:role rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain om:Employee ;
+        rdfs:range xsd:string .
+
+
+###  https://graphbench.org/order-management#weight
+om:weight rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( om:Item
+                                      om:Package
+                                      om:Product
                                     )
-                      ] .
+                      ] ;
+          rdfs:range xsd:float .
 
 
 #################################################################
